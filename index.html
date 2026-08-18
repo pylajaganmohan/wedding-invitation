@@ -2250,9 +2250,9 @@ ${mapsUrl}`;
     setTimeout(() => {
 
       // Start invitation from beginning
-      if (window.__setInvitePlaying) {
-        window.__setInvitePlaying(false);
-      }
+      // if (window.__setInvitePlaying) {
+      //   window.__setInvitePlaying(false);
+      // }
 
       // Reset all media
       document.querySelectorAll("video, audio").forEach(media => {
@@ -2387,7 +2387,62 @@ ${mapsUrl}`;
 
   });
 </script>
+<script>
+  window.addEventListener("load", () => {
 
+    let audioStartedByUser = false;
+
+    const startSyncedAudio = async () => {
+      if (audioStartedByUser) return;
+
+      const video = document.querySelector("video");
+      const audio = document.querySelector("audio");
+
+      if (!audio) return;
+
+      try {
+        // Sync audio with the video/timeline
+        if (video && Number.isFinite(video.currentTime)) {
+          if (Number.isFinite(audio.duration) && audio.duration > 0) {
+            audio.currentTime =
+              video.currentTime % audio.duration;
+          }
+        }
+
+        await audio.play();
+
+        audioStartedByUser = true;
+
+      } catch (error) {
+        console.log("Waiting for user interaction to start audio.");
+      }
+    };
+
+    // First real user interaction
+    document.addEventListener(
+      "pointerdown",
+      () => {
+        startSyncedAudio();
+      },
+      {
+        once: true,
+        passive: true
+      }
+    );
+
+    document.addEventListener(
+      "touchstart",
+      () => {
+        startSyncedAudio();
+      },
+      {
+        once: true,
+        passive: true
+      }
+    );
+
+  });
+</script>
 </body>
 
 </html>
