@@ -2118,7 +2118,7 @@ ${mapsUrl}`;
       })
     } wp.createRoot(document.getElementById("root")).render(U(Dp.default.StrictMode, { children: U(_A, {}) }));
   </script>
-  <audio id="weddingMusic" src="wedding-song.mp3" loop preload="auto"></audio>
+  <audio id="weddingMusic" src="wedding-song.mp3" loop preload="auto" autoplay muted></audio>
   <style>
     #musicControl {
       position: fixed;
@@ -2279,27 +2279,27 @@ ${mapsUrl}`;
     /* ==========================================
        RESET INVITATION ON PAGE LOAD
        ========================================== */
-    // window.addEventListener("load", () => {
-    //   setTimeout(() => {
+    window.addEventListener("load", () => {
+      setTimeout(() => {
 
-    //     // Reset timeline position to the beginning
-    //     document.querySelectorAll("video, audio").forEach(media => {
-    //       try {
-    //         media.currentTime = 0;
-    //       } catch (e) { }
-    //     });
+        // Reset timeline position to the beginning
+        document.querySelectorAll("video, audio").forEach(media => {
+          try {
+            media.currentTime = 0;
+          } catch (e) { }
+        });
 
-    //     // Keep audio UNMUTED
-    //     const audio = document.getElementById("weddingMusic");
+        // Keep audio UNMUTED
+        const audio = document.getElementById("weddingMusic");
 
-    //     if (audio) {
-    //       audio.muted = false;
-    //       audio.volume = 1;
-    //       audio.currentTime = 0;
-    //     }
+        if (audio) {
+          audio.muted = false;
+          audio.volume = 1;
+          audio.currentTime = 0;
+        }
 
-    //   }, 300);
-    // });
+      }, 300);
+    });
 
 
     /* ==========================================
@@ -2423,7 +2423,7 @@ ${mapsUrl}`;
 
     });
   </script>
-  <!-- <script>
+  <script>
     window.addEventListener("load", () => {
 
       let audioStartedByUser = false;
@@ -2612,7 +2612,125 @@ ${mapsUrl}`;
     );
 
   });
-</script>-->
+</script>
+
+<script>
+/*
+ * AUTOPLAY FIX
+ * ------------------------------------------------------------
+ * The invitation itself is NOT a <video>; its pages/animations are
+ * driven by the React timeline. The only media element is the
+ * background wedding music.
+ *
+ * Browsers allow muted autoplay, but normally block autoplay with
+ * sound. Therefore:
+ *   1. Start the music automatically in muted mode.
+ *   2. Keep the invitation animation completely independent.
+ *   3. On the first real user gesture, enable sound and continue
+ *      from the current invitation position.
+ */
+(function () {
+  function setupAutoplay() {
+    const audio = document.getElementById("weddingMusic");
+    if (!audio) return;
+
+    audio.autoplay = true;
+    audio.loop = true;
+    audio.preload = "auto";
+    audio.volume = 1;
+
+    function getInviteTime() {
+      const bar = document.querySelector("#root .h-full.bg-gradient-to-r");
+      if (!bar) return 0;
+
+      const width = parseFloat(bar.style.width || "0");
+      if (Number.isNaN(width)) return 0;
+
+      return Math.max(0, Math.min(60, (width / 100) * 60));
+    }
+
+    function syncToInvite() {
+      const t = getInviteTime();
+      if (typeof window.__setInviteSeek === "function") {
+        window.__setInviteSeek(t);
+      } else if (Number.isFinite(audio.duration) && audio.duration > 0) {
+        audio.currentTime = t % audio.duration;
+      }
+    }
+
+    // IMPORTANT: muted autoplay is intentional and browser-compatible.
+    audio.muted = true;
+    syncToInvite();
+
+    const playMuted = () => {
+      if (audio.paused) {
+        const p = audio.play();
+        if (p && typeof p.catch === "function") {
+          p.catch(() => {});
+        }
+      }
+    };
+
+    // Start automatically without requiring a screen touch.
+    playMuted();
+
+    audio.addEventListener("loadedmetadata", function () {
+      syncToInvite();
+      playMuted();
+    }, { once: true });
+
+    audio.addEventListener("canplay", playMuted);
+
+    // A real user gesture is required by browsers to enable audible playback.
+    // Only the first gesture changes mute state; the invitation timeline is
+    // never paused or started by this handler.
+    let soundEnabled = false;
+
+    function enableSound() {
+      if (soundEnabled) return;
+      soundEnabled = true;
+
+      syncToInvite();
+      audio.muted = false;
+
+      const p = audio.play();
+      if (p && typeof p.catch === "function") {
+        p.catch(() => {
+          // If the browser still rejects it, leave the invitation running.
+          audio.muted = true;
+        });
+      }
+
+      document.removeEventListener("pointerdown", enableSound);
+      document.removeEventListener("keydown", enableSound);
+    }
+
+    document.addEventListener("pointerdown", enableSound, {
+      once: true,
+      passive: true
+    });
+
+    document.addEventListener("keydown", enableSound, {
+      once: true,
+      passive: true
+    });
+
+    // If the page becomes visible again, resume muted autoplay if needed.
+    document.addEventListener("visibilitychange", function () {
+      if (document.visibilityState === "visible") {
+        playMuted();
+      }
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setupAutoplay, { once: true });
+  } else {
+    setupAutoplay();
+  }
+})();
+</script>
+
 </body>
 
 </html>
