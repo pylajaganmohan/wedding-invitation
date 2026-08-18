@@ -2279,27 +2279,27 @@ ${mapsUrl}`;
     /* ==========================================
        RESET INVITATION ON PAGE LOAD
        ========================================== */
-    window.addEventListener("load", () => {
-      setTimeout(() => {
+    // window.addEventListener("load", () => {
+    //   setTimeout(() => {
 
-        // Reset timeline position to the beginning
-        document.querySelectorAll("video, audio").forEach(media => {
-          try {
-            media.currentTime = 0;
-          } catch (e) { }
-        });
+    //     // Reset timeline position to the beginning
+    //     document.querySelectorAll("video, audio").forEach(media => {
+    //       try {
+    //         media.currentTime = 0;
+    //       } catch (e) { }
+    //     });
 
-        // Keep audio UNMUTED
-        const audio = document.getElementById("weddingMusic");
+    //     // Keep audio UNMUTED
+    //     const audio = document.getElementById("weddingMusic");
 
-        if (audio) {
-          audio.muted = false;
-          audio.volume = 1;
-          audio.currentTime = 0;
-        }
+    //     if (audio) {
+    //       audio.muted = false;
+    //       audio.volume = 1;
+    //       audio.currentTime = 0;
+    //     }
 
-      }, 300);
-    });
+    //   }, 300);
+    // });
 
 
     /* ==========================================
@@ -2423,7 +2423,7 @@ ${mapsUrl}`;
 
     });
   </script>
-  <script>
+  <!-- <script>
     window.addEventListener("load", () => {
 
       let audioStartedByUser = false;
@@ -2478,7 +2478,7 @@ ${mapsUrl}`;
       );
 
     });
-  </script>
+  </script> 
   <script>
   /* ==========================================
      AUDIO AUTOPLAY RETRY
@@ -2612,7 +2612,7 @@ ${mapsUrl}`;
     );
 
   });
-</script>
+</script>-->
 </body>
 
 </html>
