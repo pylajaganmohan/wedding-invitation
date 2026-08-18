@@ -1768,6 +1768,8 @@
         padding-bottom: 2.5rem
       }
     }
+    
+    
   </style>
 
 <style id="wedding-opening-cover-style">
@@ -1780,7 +1782,7 @@
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
-    transition: opacity 850ms ease, visibility 850ms ease;
+    transition: opacity 1400ms ease, visibility 1400ms ease;
   }
 
   #weddingOpeningCover.is-opening {
@@ -1839,7 +1841,7 @@
   .wedding-cover-details {
     position: absolute;
     z-index: 5;
-    top: 50%;
+    top: 55%;
     left: 50%;
     width: min(84%, 360px);
     transform: translateX(-50%);
@@ -1847,16 +1849,16 @@
     color: #7a102a;
   }
 
-  .wedding-cover-details .cover-mantra, .wedding-cover-details .cover-invite-text, .wedding-cover-details .cover-name, .wedding-cover-details .wedding-open-label { color: #7a102a !important; }
-  
+  .wedding-cover-details .cover-mantra, .wedding-cover-details .cover-invite-text, .wedding-cover-details .cover-name, .wedding-cover-details .wedding-open-label { color: #67011b !important; }
+
   .cover-mantra {
     font-family: "Playfair Display", Georgia, serif;
-    font-size: clamp(8px, 2.35vw, 10px);
+    font-size: clamp(10px, 2.35vw, 12px);
     font-weight: 600;
-    letter-spacing: .30em;
+    letter-spacing: .25em;
     text-transform: uppercase;
     white-space: nowrap;
-    color: #7a102a;
+    color: #560015;
   }
 
   .cover-divider {
@@ -1893,15 +1895,15 @@
     max-width: 285px;
     margin: 0 auto;
     font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: clamp(18px, 5vw, 22px);
+    font-size: clamp(20px, 5vw, 24px);
     line-height: 1.15;
     font-weight: 600;
-    color: #63372d;
+    color: #560015;
     text-shadow: 0 1px rgba(255,255,255,.75);
   }
 
   .cover-names-block {
-    margin-top: 12px;
+    margin-top: 20px;
   }
 
   .cover-name {
@@ -1909,7 +1911,7 @@
     font-size: clamp(43px, 13vw, 58px);
     line-height: .82;
     font-weight: 400;
-    color: #7a102a;
+    color: #560015;
     text-shadow:
       0 1px rgba(255,255,255,.8),
       0 2px 8px rgba(80,20,10,.08);
@@ -1930,7 +1932,7 @@
     font-weight: 600;
     letter-spacing: .20em;
     text-transform: uppercase;
-    color: #805037;
+    color: #610101;
   }
 
   .cover-date::before,
@@ -2025,7 +2027,7 @@
   }
 
   #weddingOpeningCover.is-opening #weddingOpeningCoverImage {
-    animation: weddingCoverExit 850ms cubic-bezier(.22,1,.36,1) forwards;
+    animation: weddingCoverExit 1500ms cubic-bezier(.65,0,.35,1) forwards;
   }
 
   #weddingOpeningCover.is-opening .wedding-cover-details,
@@ -2043,12 +2045,23 @@
     50% { transform: scale(1.07); opacity: .65; }
   }
 
-  @keyframes weddingCoverExit {
+  /* @keyframes weddingCoverExit {
     to {
       transform: scale(1.055);
       filter: brightness(1.04);
     }
+  } */
+
+@keyframes weddingCoverExit {
+  from {
+    opacity: 1;
+    transform: translateY(0);
   }
+  to {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+}
 
   @keyframes weddingOpenExit {
     to {
@@ -2782,6 +2795,154 @@ ${inviteUrl}`; if (navigator.share) try { await navigator.share({ title: "Sasidh
         }, 900);
       });
     })();
+  </script>
+  <script>
+    /* ==========================================
+       RESET INVITATION ON PAGE LOAD
+       ========================================== */
+    window.addEventListener("load", () => {
+      setTimeout(() => {
+
+        // Reset timeline position to the beginning
+        document.querySelectorAll("video, audio").forEach(media => {
+          try {
+            media.currentTime = 0;
+          } catch (e) { }
+        });
+
+        // Keep audio UNMUTED
+        const audio = document.getElementById("weddingMusic");
+
+        if (audio) {
+          audio.muted = false;
+          audio.volume = 1;
+          audio.currentTime = 0;
+        }
+
+      }, 300);
+    });
+
+
+    /* ==========================================
+       HIDE PROGRESS BAR UNTIL SCREEN IS TOUCHED
+       ========================================== */
+
+    const progressBarCSS = document.createElement("style");
+
+    progressBarCSS.textContent = `
+    /* Progress bar hidden by default */
+    #root .invite-progress-hidden {
+      opacity: 0 !important;
+      pointer-events: none !important;
+      transition: opacity 0.3s ease !important;
+    }
+
+    /* Show progress bar when screen is touched */
+    #root .invite-progress-visible {
+      opacity: 1 !important;
+      pointer-events: auto !important;
+      transition: opacity 0.3s ease !important;
+    }
+  `;
+
+    document.head.appendChild(progressBarCSS);
+
+
+    window.addEventListener("load", () => {
+
+      let hideTimer = null;
+
+      function getProgressBar() {
+
+        /*
+         * The React invitation creates the timeline as:
+         *
+         * bottom controls
+         *   └── .mb-3.group.cursor-pointer
+         *
+         * We find the element using its existing classes.
+         */
+        return document.querySelector(
+          '#root .absolute.bottom-0 .mb-3.group.cursor-pointer'
+        );
+      }
+
+
+      function hideProgressBar() {
+        const progress = getProgressBar();
+
+        if (progress) {
+          progress.classList.remove("invite-progress-visible");
+          progress.classList.add("invite-progress-hidden");
+        }
+      }
+
+
+      function showProgressBar() {
+
+        const progress = getProgressBar();
+
+        if (!progress) return;
+
+        progress.classList.remove("invite-progress-hidden");
+        progress.classList.add("invite-progress-visible");
+
+        clearTimeout(hideTimer);
+
+        // Hide again after 3 seconds
+        hideTimer = setTimeout(() => {
+          hideProgressBar();
+        }, 3000);
+      }
+
+
+      /*
+       * React may take a little time to render the
+       * invitation, so check several times.
+       */
+      let attempts = 0;
+
+      const setupProgressBar = setInterval(() => {
+
+        const progress = getProgressBar();
+
+        if (progress) {
+
+          clearInterval(setupProgressBar);
+
+          // Hidden when page first opens
+          hideProgressBar();
+
+          /*
+           * Touch / click anywhere on the invitation
+           * shows the timeline.
+           */
+          document.addEventListener(
+            "pointerdown",
+            (event) => {
+
+              // Don't interfere with buttons
+              if (event.target.closest("button, a")) {
+                return;
+              }
+
+              showProgressBar();
+
+            },
+            { passive: true }
+          );
+
+        }
+
+        attempts++;
+
+        if (attempts > 50) {
+          clearInterval(setupProgressBar);
+        }
+
+      }, 100);
+
+    });
   </script>
 
 </body>
