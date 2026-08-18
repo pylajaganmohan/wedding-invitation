@@ -2730,6 +2730,103 @@ ${mapsUrl}`;
   }
 })();
 </script>
+<script>
+(function () {
+
+  function forceSoundState() {
+
+    const audio = document.getElementById("weddingMusic");
+    if (!audio) return;
+
+    /*
+     * IMPORTANT:
+     * The invitation should start in UNMUTED state.
+     */
+    audio.muted = false;
+    audio.volume = 1;
+
+    /*
+     * Update the external speaker button.
+     */
+    const musicButton = document.getElementById("musicControl");
+
+    if (musicButton) {
+      musicButton.textContent = "🔊";
+      musicButton.setAttribute("aria-label", "Mute audio");
+      musicButton.setAttribute("title", "Mute audio");
+    }
+
+    /*
+     * Find the React sound button.
+     *
+     * It is the small speaker button beside
+     * the pause/play button.
+     */
+    const buttons = document.querySelectorAll("#root button");
+
+    buttons.forEach(function (button) {
+
+      const label =
+        button.getAttribute("aria-label");
+
+      if (label === "Toggle sound") {
+
+        /*
+         * Force React-rendered visual state
+         * to show UNMUTED.
+         */
+        button.setAttribute(
+          "aria-label",
+          "Toggle sound"
+        );
+
+        button.title = "Mute audio";
+
+        /*
+         * Replace only the icon visually.
+         * Do not change the React click handler.
+         */
+        button.innerHTML = `
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="white"
+            stroke-width="1.6"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M11 5L6 9H2v6h4l5 4V5Z"/>
+            <path d="M15.5 8.5a5 5 0 0 1 0 7"/>
+            <path d="M19 5a9 9 0 0 1 0 14"/>
+          </svg>
+        `;
+      }
+
+    });
+
+  }
+
+
+  /*
+   * React renders asynchronously.
+   * So run several times during startup.
+   */
+  window.addEventListener("load", function () {
+
+    forceSoundState();
+
+    setTimeout(forceSoundState, 300);
+    setTimeout(forceSoundState, 800);
+    setTimeout(forceSoundState, 1500);
+    setTimeout(forceSoundState, 2500);
+
+  });
+
+
+})();
+</script>
 
 </body>
 
