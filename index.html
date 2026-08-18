@@ -2243,6 +2243,9 @@ ${mapsUrl}`;
   <script>(function () { function m(a) { var h = a.getAttribute("href"); if (!h) return; try { var u = new URL(h, document.baseURI); if ((u.protocol === "http:" || u.protocol === "https:") && u.host !== location.host) { a.target = "_blank"; a.rel = "noopener noreferrer"; } } catch (e) { } } function s() { document.querySelectorAll("a[href]").forEach(m); } if (document.readyState !== "loading") { s(); } else { document.addEventListener("DOMContentLoaded", s); } document.addEventListener("click", function (e) { var a = e.target && e.target.closest && e.target.closest("a[href]"); if (a) { m(a); } }, true); })();</script>
 
 <script>
+  /* ==========================================
+     RESET INVITATION ON PAGE LOAD
+     ========================================== */
   window.addEventListener("load", () => {
     setTimeout(() => {
 
@@ -2251,7 +2254,7 @@ ${mapsUrl}`;
         window.__setInvitePlaying(false);
       }
 
-      // Reset all media elements
+      // Reset all media
       document.querySelectorAll("video, audio").forEach(media => {
         try {
           media.pause();
@@ -2260,6 +2263,128 @@ ${mapsUrl}`;
       });
 
     }, 300);
+  });
+
+
+  /* ==========================================
+     HIDE PROGRESS BAR UNTIL SCREEN IS TOUCHED
+     ========================================== */
+
+  const progressBarCSS = document.createElement("style");
+
+  progressBarCSS.textContent = `
+    /* Progress bar hidden by default */
+    #root .invite-progress-hidden {
+      opacity: 0 !important;
+      pointer-events: none !important;
+      transition: opacity 0.3s ease !important;
+    }
+
+    /* Show progress bar when screen is touched */
+    #root .invite-progress-visible {
+      opacity: 1 !important;
+      pointer-events: auto !important;
+      transition: opacity 0.3s ease !important;
+    }
+  `;
+
+  document.head.appendChild(progressBarCSS);
+
+
+  window.addEventListener("load", () => {
+
+    let hideTimer = null;
+
+    function getProgressBar() {
+
+      /*
+       * The React invitation creates the timeline as:
+       *
+       * bottom controls
+       *   └── .mb-3.group.cursor-pointer
+       *
+       * We find the element using its existing classes.
+       */
+      return document.querySelector(
+        '#root .absolute.bottom-0 .mb-3.group.cursor-pointer'
+      );
+    }
+
+
+    function hideProgressBar() {
+      const progress = getProgressBar();
+
+      if (progress) {
+        progress.classList.remove("invite-progress-visible");
+        progress.classList.add("invite-progress-hidden");
+      }
+    }
+
+
+    function showProgressBar() {
+
+      const progress = getProgressBar();
+
+      if (!progress) return;
+
+      progress.classList.remove("invite-progress-hidden");
+      progress.classList.add("invite-progress-visible");
+
+      clearTimeout(hideTimer);
+
+      // Hide again after 3 seconds
+      hideTimer = setTimeout(() => {
+        hideProgressBar();
+      }, 3000);
+    }
+
+
+    /*
+     * React may take a little time to render the
+     * invitation, so check several times.
+     */
+    let attempts = 0;
+
+    const setupProgressBar = setInterval(() => {
+
+      const progress = getProgressBar();
+
+      if (progress) {
+
+        clearInterval(setupProgressBar);
+
+        // Hidden when page first opens
+        hideProgressBar();
+
+        /*
+         * Touch / click anywhere on the invitation
+         * shows the timeline.
+         */
+        document.addEventListener(
+          "pointerdown",
+          (event) => {
+
+            // Don't interfere with buttons
+            if (event.target.closest("button, a")) {
+              return;
+            }
+
+            showProgressBar();
+
+          },
+          { passive: true }
+        );
+
+      }
+
+      attempts++;
+
+      if (attempts > 50) {
+        clearInterval(setupProgressBar);
+      }
+
+    }, 100);
+
   });
 </script>
 
