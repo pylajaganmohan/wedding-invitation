@@ -1,0 +1,15 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Sasidhar & Vijaya//Wedding Invitation//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:sasidhar-vijaya-wedding-20260826@example.com
+DTSTAMP:20260818T000000Z
+DTSTART:20260826T061400Z
+DTEND:20260826T081400Z
+SUMMARY:Wedding of Sasidhar & Vijaya
+LOCATION:Ramakrishna Function Hall, K Kotapadu, Visakhapatnam
+DESCRIPTION:Wedding Ceremony of Sasidhar & Vijaya - Join us!
+END:VEVENT
+END:VCALENDAR
