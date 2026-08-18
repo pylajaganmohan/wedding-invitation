@@ -2479,6 +2479,140 @@ ${mapsUrl}`;
 
     });
   </script>
+  <script>
+  /* ==========================================
+     AUDIO AUTOPLAY RETRY
+     Keeps all existing scripts intact
+     ========================================== */
+
+  window.addEventListener("load", () => {
+
+    const audio = document.getElementById("weddingMusic");
+
+    if (!audio) return;
+
+    // Make sure the intended default state is unmuted
+    audio.muted = false;
+    audio.volume = 1;
+
+    let attempts = 0;
+    const maxAttempts = 20;
+
+    function tryStartAudio() {
+
+      if (!audio) return;
+
+      // Already playing - nothing to do
+      if (!audio.paused) return;
+
+      // Don't retry forever
+      if (attempts >= maxAttempts) return;
+
+      attempts++;
+
+      // Keep audio aligned with the current invitation position
+      if (window.__setInviteSeek) {
+        const progress =
+          document.querySelector(
+            "#root .h-full.bg-gradient-to-r"
+          );
+
+        if (progress) {
+          const width = parseFloat(
+            progress.style.width || "0"
+          );
+
+          if (!Number.isNaN(width)) {
+            const time = (width / 100) * 60;
+            window.__setInviteSeek(time);
+          }
+        }
+      }
+
+      const playPromise = audio.play();
+
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {
+            console.log("Wedding music started automatically.");
+          })
+          .catch(() => {
+            // Autoplay was rejected.
+            // Try again when the audio becomes ready.
+          });
+      }
+    }
+
+
+    // Try immediately
+    tryStartAudio();
+
+
+    // Try when audio becomes ready
+    audio.addEventListener(
+      "loadeddata",
+      tryStartAudio
+    );
+
+    audio.addEventListener(
+      "canplay",
+      tryStartAudio
+    );
+
+    audio.addEventListener(
+      "canplaythrough",
+      tryStartAudio
+    );
+
+    audio.addEventListener(
+      "loadedmetadata",
+      tryStartAudio
+    );
+
+
+    // Retry a few times while the page is initializing
+    const retryTimer = setInterval(() => {
+
+      if (!audio.paused) {
+        clearInterval(retryTimer);
+        return;
+      }
+
+      tryStartAudio();
+
+      if (attempts >= maxAttempts) {
+        clearInterval(retryTimer);
+      }
+
+    }, 500);
+
+
+    // Try again when page becomes visible
+    document.addEventListener(
+      "visibilitychange",
+      () => {
+        if (
+          document.visibilityState === "visible" &&
+          audio.paused
+        ) {
+          tryStartAudio();
+        }
+      }
+    );
+
+
+    // Try again when returning to the page
+    window.addEventListener(
+      "pageshow",
+      () => {
+        if (audio.paused) {
+          tryStartAudio();
+        }
+      }
+    );
+
+  });
+</script>
 </body>
 
 </html>
