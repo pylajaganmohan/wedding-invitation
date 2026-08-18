@@ -3,10 +3,6 @@
 
 <head>
   <meta charset="UTF-8">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
-    
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -2147,400 +2143,134 @@ ${mapsUrl}`;
       transform: scale(.94)
     }
   </style>
-    <!-- Minimal mobile-first wedding cover -->
-    <style>
-      #inviteStartOverlay{position:fixed;inset:0;z-index:100000;overflow:hidden;display:flex;align-items:center;justify-content:center;background:#160207;opacity:1;visibility:visible;transition:opacity .9s ease,visibility .9s ease}
-      #inviteStartOverlay.hidden{opacity:0;visibility:hidden;pointer-events:none}
-      .cover-art{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;z-index:-3}
-      #inviteStartOverlay::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:-2;background:linear-gradient(180deg,rgba(30,0,5,.04),transparent 24%,transparent 78%,rgba(16,0,4,.42)),radial-gradient(ellipse at center,transparent 66%,rgba(10,0,3,.22) 100%)}
-      .cover-details{position:relative;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;text-align:center;pointer-events:none;animation:detailsIn 1s cubic-bezier(.22,1,.36,1) both}
-      @keyframes detailsIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
-      .cover-top{
-        position:absolute;
-        top:13.5%;
-        width:calc(100% - 42px);
-        color:#6f1727;
-      }
-      .cover-mantra{margin:0;color:#7d2633;font-family:var(--font-body),Arial,sans-serif;font-size:clamp(8px,2.3vw,11px);font-weight:600;line-height:1.5;letter-spacing:.22em;text-transform:uppercase}
-      .cover-rule{display:flex;align-items:center;justify-content:center;gap:9px;margin:12px auto 18px}
-      .cover-rule i{width:42px;height:1px;background:linear-gradient(90deg,transparent,#b8893b)}
-      .cover-rule i:last-child{background:linear-gradient(90deg,#b8893b,transparent)}
-      .cover-rule b{font-size:8px;color:#b27d2f;font-weight:400}
-      .cover-names{margin:0;color:#6e1227;font-family:var(--font-display),Georgia,serif;font-size:clamp(40px,11vw,57px);font-weight:600;line-height:.92;letter-spacing:.01em;text-shadow:0 1px 0 rgba(255,255,255,.7),0 3px 14px rgba(80,20,10,.12)}
-      .cover-heart{margin:9px 0;color:#a91f3c;font-family:var(--font-serif),Georgia,serif;font-size:17px;font-weight:700}
-      .cover-bottom{
-        position:absolute;
-        top:61%;
-        width:calc(100% - 42px);
-      }
-      .cover-date{margin:0;color:#7c1c2e;font-family:var(--font-body),Arial,sans-serif;font-size:clamp(10px,2.8vw,12px);font-weight:700;line-height:1.5;letter-spacing:.16em;text-transform:uppercase}
-      .cover-open{
-        position:absolute;
-        left:50%;
-        top:70%;
-        transform:translateX(-50%);
-        display:flex;
-        flex-direction:column;
-        align-items:center;
-        gap:7px;
-        pointer-events:auto;
-      }
-      #openInvitationBtn{
-        position:relative;
-        width:58px;
-        height:58px;
-        border-radius:50%;
-        border:1px solid #a9792f;
-        background:rgba(255,249,232,.84);
-        color:#7b1d31;
-        display:grid;
-        place-items:center;
-        cursor:pointer;
-        touch-action:manipulation;
-        -webkit-tap-highlight-color:transparent;
-        box-shadow:
-          0 3px 14px rgba(90,35,12,.18),
-          0 0 0 5px rgba(173,124,48,.07),
-          inset 0 0 0 3px rgba(255,255,255,.35);
-        transition:transform .2s ease,background .2s ease,box-shadow .2s ease;
-      }
-      #openInvitationBtn::before{content:"";position:absolute;width:64px;height:64px;border:1px solid rgba(169,122,48,.25);border-radius:50%;animation:coverPulse 2.2s ease-in-out infinite}
-      #openInvitationBtn:hover{transform:scale(1.06);background:rgba(255,250,236,.9)}
-      #openInvitationBtn:active{transform:scale(.94)}
-      .open-symbol{
-        width:25px;
-        height:25px;
-        display:block;
-        overflow:visible;
-      }
-      .open-text{
-        color:#7b2632;
-        font-family:var(--font-body),Arial,sans-serif;
-        font-size:8px;
-        font-weight:700;
-        line-height:1.4;
-        letter-spacing:.23em;
-        text-transform:uppercase;
-        text-shadow:0 1px rgba(255,255,255,.7);
-      }
-      @keyframes coverPulse{0%,100%{opacity:.15;transform:scale(.92)}50%{opacity:.65;transform:scale(1.08)}}
-      #inviteStartOverlay.opening .cover-art{animation:artReveal 900ms ease forwards}
-      #inviteStartOverlay.opening .cover-details{animation:coverExit 850ms ease forwards}
-      @keyframes artReveal{to{transform:scale(1.025);filter:brightness(1.04)}}
-      @keyframes coverExit{to{opacity:0;transform:translateY(-10px) scale(1.015)}}
-      html,body{width:100%;min-height:100%;margin:0;overflow:hidden;-webkit-text-size-adjust:100%}
-      @media(max-height:680px){.cover-top{top:12%}.cover-bottom{top:48%}.cover-open{bottom:8%}.cover-names{font-size:clamp(35px,10vw,47px)}}
-      @media(min-height:800px){.cover-top{top:17%}.cover-bottom{top:52%}.cover-open{bottom:11%}}
-      @media(orientation:landscape) and (max-height:600px){.cover-top{top:8%}.cover-bottom{top:46%}.cover-open{bottom:5%}.cover-names{font-size:clamp(30px,7vw,43px)}}
-    
-      .invitation-intro{
-        display:flex;
-        align-items:center;
-        justify-content:center;
-        gap:8px;
-        width:100%;
-        margin:0 auto 9px;
-        color:#704033;
-      }
-
-      .intro-line{
-        display:block;
-        width:25px;
-        height:1px;
-        background:linear-gradient(90deg,transparent,#b68b49);
-      }
-
-      .intro-line:last-child{
-        background:linear-gradient(90deg,#b68b49,transparent);
-      }
-
-      .intro-text{
-        font-family:"Montserrat",Arial,sans-serif;
-        font-size:7.5px;
-        font-weight:600;
-        line-height:1.4;
-        letter-spacing:.12em;
-        text-transform:uppercase;
-        white-space:nowrap;
-      }
-
-      .invitation-title{
-        margin:0 auto 14px;
-        color:#63372d;
-        font-family:"Cormorant Garamond",Georgia,serif;
-        font-size:18px;
-        font-weight:600;
-        line-height:1.12;
-        letter-spacing:.01em;
-        text-shadow:0 1px rgba(255,255,255,.55);
-      }
-
-      .cover-names{
-        font-family:"Cormorant Garamond",Georgia,serif !important;
-        font-weight:700 !important;
-        letter-spacing:.015em !important;
-      }
-
-      .cover-date{
-        font-family:"Montserrat",Arial,sans-serif !important;
-        font-weight:700 !important;
-      }
-
-      @media(max-width:430px){
-        .invitation-title{font-size:17px;margin-bottom:12px}
-        .intro-text{font-size:7px;letter-spacing:.1em}
-        .intro-line{width:20px}
-      }
-
-</style>
-
-    <div id="inviteStartOverlay" aria-label="Wedding invitation opening">
-      <img class="cover-art" src="wedding-cover.jpg" alt="Wedding invitation cover">
-
-      <div class="cover-details">
-        <div class="cover-top">
-          <p class="cover-mantra">॥ SHREE GANESHAYA NAMAH ॥</p>
-
-          <div class="royal-divider">
-            <span></span>
-            <b>✦</b>
-            <span></span>
-          </div>
-
-          <div class="invitation-intro">
-            <span></span>
-            <strong>TOGETHER WITH OUR FAMILIES</strong>
-            <span></span>
-          </div>
-
-          <div class="invitation-title">
-            We joyfully invite you<br>
-            to celebrate the wedding of
-          </div>
-
-          <div class="cover-names">Sasidhar</div>
-          <div class="cover-heart">♥</div>
-          <div class="cover-names">Vijaya</div>
-        </div>
-
-        <div class="cover-bottom">
-          <div class="date-ornament">
-            <span></span>
-            <i>✦</i>
-            <span></span>
-          </div>
-          <p class="cover-date">26 August 2026</p>
-        </div>
-
-        <div class="cover-open">
-          <button id="openInvitationBtn" type="button" aria-label="Open wedding invitation">
-            <svg class="couple-icon" viewBox="0 0 100 100" aria-hidden="true">
-              <!-- Bride -->
-              <circle cx="35" cy="27" r="6" fill="none" stroke="currentColor" stroke-width="2"/>
-              <path d="M30 25 C20 30 18 45 23 58 C26 65 29 69 34 73"
-                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              <path d="M29 37 Q35 33 41 37 L44 67 Q35 76 26 67Z"
-                    fill="none" stroke="currentColor" stroke-width="2"/>
-
-              <!-- Groom -->
-              <circle cx="65" cy="27" r="6" fill="none" stroke="currentColor" stroke-width="2"/>
-              <path d="M59 25 Q65 18 71 25"
-                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              <path d="M59 37 Q65 33 71 37 L75 68 Q65 75 55 68Z"
-                    fill="none" stroke="currentColor" stroke-width="2"/>
-
-              <!-- Holding hands -->
-              <path d="M39 44 Q47 47 52 52"
-                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              <path d="M61 44 Q56 47 52 52"
-                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              <circle cx="52" cy="52" r="2.5" fill="#b8893b"/>
-
-              <!-- Small heart -->
-              <path d="M52 43 C48 38 42 42 52 49 C62 42 56 38 52 43Z"
-                    fill="#9e1f38"/>
-
-              <!-- Footprints -->
-              <ellipse cx="45" cy="80" rx="3" ry="6" fill="#b8893b" transform="rotate(-15 45 80)"/>
-              <ellipse cx="59" cy="80" rx="3" ry="6" fill="#b8893b" transform="rotate(15 59 80)"/>
-            </svg>
-          </button>
-          <span class="open-text">OPEN INVITATION</span>
-        </div>
-      </div>
-    </div>
-
-<button id="musicControl" aria-label="Mute audio" title="Mute audio">🔊</button>
+  <button id="musicControl" aria-label="Mute audio" title="Mute audio">🔊</button>
 
   <script>
-    (() => {
-      const audio = document.getElementById("weddingMusic");
-      const root = document.getElementById("root");
-      const overlay = document.getElementById("inviteStartOverlay");
-      const openButton = document.getElementById("openInvitationBtn");
-      const musicButton = document.getElementById("musicControl");
+    (function () {
+      const audio = document.getElementById('weddingMusic');
+      const root = document.getElementById('root');
       const TOTAL = 60;
+      let videoPlaying = true;
+      let lastTime = 0;
+      let resetting = false;
 
-      if (!audio || !overlay || !openButton) return;
-
-      let invitationPlaying = true;
-      let invitationStarted = false;
-      let lastTimelineTime = 0;
-      let loopResetting = false;
-      let pendingSeek = null;
-
-      // The invitation should start unmuted once the guest performs the
-      // deliberate opening gesture. Browsers may still reject autoplay until
-      // that gesture occurs; this is expected mobile-browser behaviour.
+      // Default state is UNMUTED.
       audio.muted = false;
       audio.volume = 1;
 
-      function getTimelineTime() {
-        const progress = root?.querySelector(".h-full.bg-gradient-to-r");
-        if (!progress) return 0;
-
-        const width = parseFloat(progress.style.width || "0");
-        if (!Number.isFinite(width)) return 0;
-
-        return Math.max(0, Math.min(TOTAL, (width / 100) * TOTAL));
+      function videoTime() {
+        const bar = root && root.querySelector('.h-full.bg-gradient-to-r');
+        if (bar) {
+          const w = parseFloat(bar.style.width || '0');
+          if (!Number.isNaN(w)) return Math.max(0, Math.min(TOTAL, w / 100 * TOTAL));
+        }
+        return 0;
       }
 
-      function syncAudioToInvitation(time) {
-        if (!Number.isFinite(time)) return;
-
-        if (Number.isFinite(audio.duration) && audio.duration > 0) {
-          audio.currentTime = time % audio.duration;
-          pendingSeek = null;
-        } else {
-          pendingSeek = time;
+      function syncAudio(time) {
+        if (!audio || !Number.isFinite(time)) return;
+        const d = audio.duration;
+        if (Number.isFinite(d) && d > 0) {
+          audio.currentTime = time % d;
         }
       }
 
-      audio.addEventListener("loadedmetadata", () => {
-        if (pendingSeek !== null && Number.isFinite(audio.duration)) {
+      async function startAudio(time) {
+        if (!audio) return;
+        syncAudio(time);
+        try { await audio.play(); } catch (e) {
+          // Browsers can block unmuted autoplay. The first user interaction
+          // below will start the audio without changing the unmuted state.
+        }
+      }
+
+      window.__setInvitePlaying = async function (playing, time) {
+        videoPlaying = playing;
+        if (!audio) return;
+        if (playing) {
+          await startAudio(time);
+        } else {
+          audio.pause();
+        }
+      };
+
+      window.__setInviteMuted = function (muted, time) {
+        if (!audio) return;
+        audio.muted = muted;
+        // Mute/unmute never changes the invitation timeline.
+        if (!muted && videoPlaying) {
+          startAudio(time);
+        }
+      };
+
+
+      let pendingSeek = null;
+      window.__setInviteSeek = function (time) {
+        if (!audio || !Number.isFinite(time)) return;
+        pendingSeek = time;
+        const d = audio.duration;
+        if (Number.isFinite(d) && d > 0) {
+          audio.currentTime = time % d;
+          pendingSeek = null;
+        }
+      };
+      audio.addEventListener('loadedmetadata', function () {
+        if (pendingSeek !== null) {
           audio.currentTime = pendingSeek % audio.duration;
           pendingSeek = null;
         }
       });
 
-      async function playAudioAt(time) {
-        syncAudioToInvitation(time);
-        if (audio.muted) return false;
-
-        try {
-          await audio.play();
-          return true;
-        } catch (error) {
-          // The browser rejected playback. Do not change the mute state or
-          // fake a successful start; the next user gesture can retry it.
-          return false;
-        }
+      const btn = document.getElementById('musicControl');
+      function update() {
+        btn.textContent = audio.muted ? '🔇' : '🔊';
+        btn.setAttribute('aria-label', audio.muted ? 'Unmute audio' : 'Mute audio');
+        btn.title = audio.muted ? 'Unmute audio' : 'Mute audio';
       }
 
-      window.__setInvitePlaying = async (playing, time) => {
-        invitationPlaying = Boolean(playing);
+      btn.addEventListener("click", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
 
-        if (!invitationPlaying) {
-          audio.pause();
-          return;
-        }
+        const newMutedState = !audio.muted;
 
-        await playAudioAt(Number.isFinite(time) ? time : getTimelineTime());
-      };
+        audio.muted = newMutedState;
 
-      window.__setInviteMuted = (muted, time) => {
-        audio.muted = Boolean(muted);
-        updateMusicButton();
+        window.__setInviteMuted(newMutedState, videoTime());
 
-        if (!audio.muted && invitationPlaying) {
-          playAudioAt(Number.isFinite(time) ? time : getTimelineTime());
-        }
-      };
-
-      window.__setInviteSeek = (time) => {
-        if (!Number.isFinite(time)) return;
-        syncAudioToInvitation(time);
-      };
-
-      function updateMusicButton() {
-        if (!musicButton) return;
-
-        const muted = audio.muted;
-        musicButton.textContent = muted ? "🔇" : "🔊";
-        musicButton.setAttribute("aria-label", muted ? "Unmute audio" : "Mute audio");
-        musicButton.title = muted ? "Unmute audio" : "Mute audio";
-      }
-
-      musicButton?.addEventListener("click", (event) => {
-        event.preventDefault();
-        event.stopPropagation();
-
-        const nextMuted = !audio.muted;
-        window.__setInviteMuted(nextMuted, getTimelineTime());
+        update();
       });
 
-      audio.addEventListener("volumechange", updateMusicButton);
-      updateMusicButton();
+      audio.addEventListener('volumechange', update);
+      update();
 
-      async function openInvitation() {
-        if (invitationStarted) return;
-        invitationStarted = true;
+      // Try to start unmuted audio. If autoplay is blocked, the first tap/click
+      // starts it, while keeping the default state unmuted.
+      startAudio(0);
 
-        // Opening the seal itself is the required mobile user gesture.
-        // Start the audio before awaiting anything else.
-        audio.muted = false;
-        audio.volume = 1;
-        syncAudioToInvitation(0);
-
-        const audioStarted = await playAudioAt(0);
-
-        if (!audioStarted) {
-          invitationStarted = false;
-          return;
+      document.addEventListener('pointerdown', function () {
+        if (videoPlaying && audio.paused) {
+          startAudio(videoTime());
         }
+      });
 
-        overlay.classList.add("opening");
-
-        window.setTimeout(() => {
-          overlay.classList.add("hidden");
-        }, 700);
-      }
-
-      openButton.addEventListener("click", openInvitation);
-
-      // Recovery only: if audio was blocked during the opening gesture, a
-      // later tap can retry it. It never overrides a deliberate mute state.
-      document.addEventListener("pointerdown", (event) => {
-        if (!overlay.classList.contains("hidden")) return;
-        if (event.target.closest("button, a")) return;
-        if (audio.muted || !invitationPlaying || !audio.paused) return;
-
-        playAudioAt(getTimelineTime());
-      }, { passive: true });
-
-      // Keep audio aligned with the React invitation's 60-second loop.
-      function watchTimeline() {
-        const time = getTimelineTime();
-
-        if (!loopResetting && lastTimelineTime > 58.5 && time < 1.5) {
-          loopResetting = true;
-          audio.pause();
-          audio.currentTime = 0;
-
-          if (invitationPlaying && !audio.muted) {
-            playAudioAt(0);
+      // Detect the 60s invitation loop. When the visual timeline wraps from
+      // the end to the beginning, reset BOTH visual audio position and playback.
+      function watchLoop() {
+        const t = videoTime();
+        if (!resetting && lastTime > 58.5 && t < 1.5) {
+          resetting = true;
+          if (audio) {
+            audio.pause();
+            audio.currentTime = 0;
+            if (videoPlaying) startAudio(0);
           }
-
-          window.setTimeout(() => {
-            loopResetting = false;
-          }, 300);
+          setTimeout(() => { resetting = false; }, 250);
         }
-
-        lastTimelineTime = time;
-        window.requestAnimationFrame(watchTimeline);
+        lastTime = t;
+        requestAnimationFrame(watchLoop);
       }
-
-      window.requestAnimationFrame(watchTimeline);
+      requestAnimationFrame(watchLoop);
     })();
   </script>
   <script>(function () { function m(a) { var h = a.getAttribute("href"); if (!h) return; try { var u = new URL(h, document.baseURI); if ((u.protocol === "http:" || u.protocol === "https:") && u.host !== location.host) { a.target = "_blank"; a.rel = "noopener noreferrer"; } } catch (e) { } } function s() { document.querySelectorAll("a[href]").forEach(m); } if (document.readyState !== "loading") { s(); } else { document.addEventListener("DOMContentLoaded", s); } document.addEventListener("click", function (e) { var a = e.target && e.target.closest && e.target.closest("a[href]"); if (a) { m(a); } }, true); })();</script>
@@ -2693,357 +2423,196 @@ ${mapsUrl}`;
 
     });
   </script>
+  <!-- <script>
+    window.addEventListener("load", () => {
 
+      let audioStartedByUser = false;
 
-    <!-- Final cover styling for the supplied wedding-cover.jpg -->
-    <style>
-      #inviteStartOverlay {
-        position: fixed;
-        inset: 0;
-        z-index: 100000;
-        overflow: hidden;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: #160207;
-        opacity: 1;
-        visibility: visible;
-        transition: opacity .9s ease, visibility .9s ease;
-      }
+      const startSyncedAudio = async () => {
+        if (audioStartedByUser) return;
 
-      #inviteStartOverlay.hidden {
-        opacity: 0;
-        visibility: hidden;
-        pointer-events: none;
-      }
+        const video = document.querySelector("video");
+        const audio = document.querySelector("audio");
 
-      #inviteStartOverlay .cover-art {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center center;
-        z-index: -3;
-      }
+        if (!audio) return;
 
-      #inviteStartOverlay::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        pointer-events: none;
-        z-index: -2;
-        background:
-          linear-gradient(180deg, rgba(30,0,5,.03), transparent 24%, transparent 80%, rgba(16,0,4,.34)),
-          radial-gradient(ellipse at center, transparent 66%, rgba(10,0,3,.18) 100%);
-      }
+        try {
+          // Sync audio with the video/timeline
+          if (video && Number.isFinite(video.currentTime)) {
+            if (Number.isFinite(audio.duration) && audio.duration > 0) {
+              audio.currentTime =
+                video.currentTime % audio.duration;
+            }
+          }
 
-      #inviteStartOverlay .cover-details {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        pointer-events: none;
-        animation: finalDetailsIn .9s cubic-bezier(.22,1,.36,1) both;
-      }
+          await audio.play();
 
-      #inviteStartOverlay .cover-top {
-        position: absolute;
-        top: 13.5%;
-        width: min(84%, 370px);
-        color: #701b2b;
-      }
+          audioStartedByUser = true;
 
-      #inviteStartOverlay .cover-mantra {
-        margin: 0;
-        color: #762033;
-        font-family: "Montserrat", Arial, sans-serif;
-        font-size: clamp(8px, 2.3vw, 10px);
-        font-weight: 600;
-        line-height: 1.5;
-        letter-spacing: .28em;
-        text-transform: uppercase;
-        text-shadow: 0 1px rgba(255,255,255,.75);
-      }
-
-      #inviteStartOverlay .royal-divider {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 9px;
-        margin: 11px auto 18px;
-      }
-
-      #inviteStartOverlay .royal-divider span {
-        width: 45px;
-        height: 1px;
-        background: linear-gradient(90deg, transparent, #b8893b);
-      }
-
-      #inviteStartOverlay .royal-divider span:last-child {
-        background: linear-gradient(90deg, #b8893b, transparent);
-      }
-
-      #inviteStartOverlay .royal-divider b {
-        color: #b8893b;
-        font-size: 8px;
-        font-weight: 400;
-      }
-
-      #inviteStartOverlay .invitation-intro {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 7px;
-        width: 100%;
-        margin: 0 auto 10px;
-        color: #704033;
-      }
-
-      #inviteStartOverlay .invitation-intro span {
-        display: block;
-        width: 25px;
-        height: 1px;
-        background: linear-gradient(90deg, transparent, #b8893b);
-      }
-
-      #inviteStartOverlay .invitation-intro span:last-child {
-        background: linear-gradient(90deg, #b8893b, transparent);
-      }
-
-      #inviteStartOverlay .invitation-intro strong {
-        font-family: "Montserrat", Arial, sans-serif;
-        font-size: 7px;
-        font-weight: 600;
-        line-height: 1.4;
-        letter-spacing: .15em;
-        color: #8b6336;
-        white-space: nowrap;
-      }
-
-      #inviteStartOverlay .invitation-title {
-        margin: 0 auto 12px;
-        color: #63372d;
-        font-family: "Cormorant Garamond", Georgia, serif;
-        font-size: clamp(17px, 4.8vw, 21px);
-        font-weight: 600;
-        line-height: 1.12;
-        letter-spacing: .01em;
-        text-shadow: 0 1px rgba(255,255,255,.7);
-      }
-
-      #inviteStartOverlay .cover-names {
-        margin: 0;
-        color: #74152b;
-        font-family: "Cormorant Garamond", Georgia, serif !important;
-        font-size: clamp(43px, 12vw, 58px);
-        font-weight: 700 !important;
-        line-height: .84;
-        letter-spacing: .01em !important;
-        text-shadow: 0 1px rgba(255,255,255,.8), 0 3px 10px rgba(80,20,10,.08);
-      }
-
-      #inviteStartOverlay .cover-heart {
-        margin: 9px 0;
-        color: #a51f3a;
-        font-family: "Cormorant Garamond", Georgia, serif;
-        font-size: 18px;
-        font-weight: 700;
-      }
-
-      #inviteStartOverlay .cover-bottom {
-        position: absolute;
-        top: 57%;
-        width: 100%;
-        text-align: center;
-      }
-
-      #inviteStartOverlay .date-ornament {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        margin-bottom: 8px;
-      }
-
-      #inviteStartOverlay .date-ornament span {
-        width: 35px;
-        height: 1px;
-        background: linear-gradient(90deg, transparent, rgba(184,137,59,.7));
-      }
-
-      #inviteStartOverlay .date-ornament span:last-child {
-        background: linear-gradient(90deg, rgba(184,137,59,.7), transparent);
-      }
-
-      #inviteStartOverlay .date-ornament i {
-        color: #b8893b;
-        font-size: 7px;
-        font-style: normal;
-      }
-
-      #inviteStartOverlay .cover-date {
-        margin: 0;
-        color: #762033;
-        font-family: "Montserrat", Arial, sans-serif !important;
-        font-size: clamp(10px, 2.8vw, 12px);
-        font-weight: 700 !important;
-        line-height: 1.5;
-        letter-spacing: .18em;
-        text-transform: uppercase;
-      }
-
-      #inviteStartOverlay .cover-open {
-        position: absolute;
-        left: 50%;
-        top: 68%;
-        transform: translateX(-50%);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 7px;
-        pointer-events: auto;
-      }
-
-      #inviteStartOverlay #openInvitationBtn {
-        position: relative;
-        width: 72px;
-        height: 72px;
-        border-radius: 50%;
-        border: 1px solid #b8893b;
-        background: rgba(255,249,232,.72);
-        color: #7b1d31;
-        display: grid;
-        place-items: center;
-        cursor: pointer;
-        touch-action: manipulation;
-        -webkit-tap-highlight-color: transparent;
-        box-shadow:
-          0 4px 16px rgba(90,35,12,.15),
-          0 0 0 5px rgba(173,124,48,.06),
-          inset 0 0 0 3px rgba(255,255,255,.3);
-        transition: transform .25s ease, background .25s ease;
-      }
-
-      #inviteStartOverlay #openInvitationBtn::before {
-        content: "";
-        position: absolute;
-        inset: -7px;
-        width: auto;
-        height: auto;
-        border: 1px solid rgba(169,122,48,.28);
-        border-radius: 50%;
-        animation: finalCouplePulse 2.5s ease-in-out infinite;
-      }
-
-      #inviteStartOverlay #openInvitationBtn:hover {
-        transform: scale(1.06);
-        background: rgba(255,250,236,.9);
-      }
-
-      #inviteStartOverlay #openInvitationBtn:active {
-        transform: scale(.94);
-      }
-
-      #inviteStartOverlay .couple-icon {
-        width: 54px;
-        height: 54px;
-        display: block;
-        overflow: visible;
-      }
-
-      #inviteStartOverlay .open-text {
-        color: #7b2632;
-        font-family: "Montserrat", Arial, sans-serif;
-        font-size: 7px;
-        font-weight: 700;
-        line-height: 1.4;
-        letter-spacing: .22em;
-        text-transform: uppercase;
-        text-shadow: 0 1px rgba(255,255,255,.75);
-      }
-
-      #inviteStartOverlay.opening .cover-art {
-        animation: finalArtReveal 900ms ease forwards;
-      }
-
-      #inviteStartOverlay.opening .cover-details {
-        animation: finalCoverExit 850ms ease forwards;
-      }
-
-      @keyframes finalDetailsIn {
-        from { opacity: 0; transform: translateY(12px); }
-        to { opacity: 1; transform: translateY(0); }
-      }
-
-      @keyframes finalCouplePulse {
-        0%, 100% { transform: scale(.94); opacity: .15; }
-        50% { transform: scale(1.08); opacity: .65; }
-      }
-
-      @keyframes finalArtReveal {
-        to { transform: scale(1.025); filter: brightness(1.04); }
-      }
-
-      @keyframes finalCoverExit {
-        to { opacity: 0; transform: translateY(-10px) scale(1.015); }
-      }
-
-      @media (max-width: 430px) {
-        #inviteStartOverlay .cover-top {
-          top: 13%;
-          width: 84%;
+        } catch (error) {
+          console.log("Waiting for user interaction to start audio.");
         }
+      };
 
-        #inviteStartOverlay .invitation-title {
-          font-size: 17px;
-          margin-bottom: 11px;
+      // First real user interaction
+      document.addEventListener(
+        "pointerdown",
+        () => {
+          startSyncedAudio();
+        },
+        {
+          once: true,
+          passive: true
         }
+      );
 
-        #inviteStartOverlay .cover-names {
-          font-size: 48px;
+      document.addEventListener(
+        "touchstart",
+        () => {
+          startSyncedAudio();
+        },
+        {
+          once: true,
+          passive: true
         }
+      );
 
-        #inviteStartOverlay .cover-bottom {
-          top: 56%;
-        }
+    });
+  </script> 
+  <script>
+  /* ==========================================
+     AUDIO AUTOPLAY RETRY
+     Keeps all existing scripts intact
+     ========================================== */
 
-        #inviteStartOverlay .cover-open {
-          top: 67%;
-        }
+  window.addEventListener("load", () => {
 
-        #inviteStartOverlay #openInvitationBtn {
-          width: 68px;
-          height: 68px;
-        }
+    const audio = document.getElementById("weddingMusic");
 
-        #inviteStartOverlay .couple-icon {
-          width: 51px;
-          height: 51px;
+    if (!audio) return;
+
+    // Make sure the intended default state is unmuted
+    audio.muted = false;
+    audio.volume = 1;
+
+    let attempts = 0;
+    const maxAttempts = 20;
+
+    function tryStartAudio() {
+
+      if (!audio) return;
+
+      // Already playing - nothing to do
+      if (!audio.paused) return;
+
+      // Don't retry forever
+      if (attempts >= maxAttempts) return;
+
+      attempts++;
+
+      // Keep audio aligned with the current invitation position
+      if (window.__setInviteSeek) {
+        const progress =
+          document.querySelector(
+            "#root .h-full.bg-gradient-to-r"
+          );
+
+        if (progress) {
+          const width = parseFloat(
+            progress.style.width || "0"
+          );
+
+          if (!Number.isNaN(width)) {
+            const time = (width / 100) * 60;
+            window.__setInviteSeek(time);
+          }
         }
       }
 
-      @media (max-height: 680px) {
-        #inviteStartOverlay .cover-top {
-          top: 10%;
-        }
+      const playPromise = audio.play();
 
-        #inviteStartOverlay .cover-bottom {
-          top: 52%;
-        }
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {
+            console.log("Wedding music started automatically.");
+          })
+          .catch(() => {
+            // Autoplay was rejected.
+            // Try again when the audio becomes ready.
+          });
+      }
+    }
 
-        #inviteStartOverlay .cover-open {
-          top: 64%;
-        }
 
-        #inviteStartOverlay .cover-names {
-          font-size: 43px;
+    // Try immediately
+    tryStartAudio();
+
+
+    // Try when audio becomes ready
+    audio.addEventListener(
+      "loadeddata",
+      tryStartAudio
+    );
+
+    audio.addEventListener(
+      "canplay",
+      tryStartAudio
+    );
+
+    audio.addEventListener(
+      "canplaythrough",
+      tryStartAudio
+    );
+
+    audio.addEventListener(
+      "loadedmetadata",
+      tryStartAudio
+    );
+
+
+    // Retry a few times while the page is initializing
+    const retryTimer = setInterval(() => {
+
+      if (!audio.paused) {
+        clearInterval(retryTimer);
+        return;
+      }
+
+      tryStartAudio();
+
+      if (attempts >= maxAttempts) {
+        clearInterval(retryTimer);
+      }
+
+    }, 500);
+
+
+    // Try again when page becomes visible
+    document.addEventListener(
+      "visibilitychange",
+      () => {
+        if (
+          document.visibilityState === "visible" &&
+          audio.paused
+        ) {
+          tryStartAudio();
         }
       }
-    </style>
+    );
+
+
+    // Try again when returning to the page
+    window.addEventListener(
+      "pageshow",
+      () => {
+        if (audio.paused) {
+          tryStartAudio();
+        }
+      }
+    );
+
+  });
+</script>-->
 </body>
 
 </html>
