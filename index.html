@@ -2579,27 +2579,61 @@ ${inviteUrl}
 🗺️ Venue:
 ${mapsUrl}`;
 
-                if (navigator.share) {
-                  try {
+                try {
+                  // Get the wedding image
+                  const response = await fetch("wedding-preview.jpg");
+                  const blob = await response.blob();
+
+                  const imageFile = new File(
+                    [blob],
+                    "Sasidhar-Vijaya-Wedding-Invitation.jpg",
+                    {
+                      type: "image/jpeg"
+                    }
+                  );
+
+                  // Check whether the browser supports sharing files
+                  if (
+                    navigator.share &&
+                    navigator.canShare &&
+                    navigator.canShare({ files: [imageFile] })
+                  ) {
                     await navigator.share({
+                      files: [imageFile],
                       title: "Sasidhar ❤️ Vijaya — Wedding Invitation",
-                      text: inviteText,
-                      url: inviteUrl
+                      text: inviteText
                     });
 
                     return;
-                  } catch (error) {
-                    if (error && error.name === "AbortError") {
-                      return;
-                    }
                   }
-                }
 
-                try {
+                  // Fallback to normal sharing
+                  if (navigator.share) {
+                    await navigator.share({
+                      title: "Sasidhar ❤️ Vijaya — Wedding Invitation",
+                      text: inviteText
+                    });
+
+                    return;
+                  }
+
+                  // Final fallback
                   await navigator.clipboard.writeText(inviteText);
                   alert("Invitation message and links copied!");
-                } catch {
-                  alert(inviteText);
+
+                } catch (error) {
+                  if (error && error.name === "AbortError") {
+                    return;
+                  }
+
+                  console.error("Share failed:", error);
+
+                  try {
+                    await navigator.clipboard.writeText(inviteText);
+                    alert("Invitation message and links copied!");
+                  } catch {
+                    alert(inviteText);
+                  }
                 }
               }, className: "group relative overflow-hidden rounded-[14px] bg-[#7a102a] border border-[#7a102a] px-3 py-3.5 flex flex-col items-center gap-1.5 hover:bg-[#8f1432] transition-all", children: [U("div", { className: "w-8 h-8 rounded-full bg-[#d4a753] flex items-center justify-center group-hover:scale-105 transition-transform", children: x("svg", { width: "14", height: "14", viewBox: "0 0 24 24", fill: "none", stroke: "white", strokeWidth: "1.7", children: [U("circle", { cx: "18", cy: "5", r: "3" }), U("circle", { cx: "6", cy: "12", r: "3" }), U("circle", { cx: "18", cy: "19", r: "3" }), U("path", { d: "M8.6 13.5l6.8-4M15.4 6.5l-6.8 4" })] }) }), U("span", { className: "font-playfair text-[11px] font-semibold tracking-wide text-white", children: "Share" }), U("span", { className: "font-cormorant text-[9px] text-white/60 tracking-wider uppercase", children: "WhatsApp" })]
             })]
