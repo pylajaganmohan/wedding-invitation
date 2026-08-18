@@ -2246,21 +2246,24 @@ ${mapsUrl}`;
   /* ==========================================
      RESET INVITATION ON PAGE LOAD
      ========================================== */
-  window.addEventListener("load", () => {
+   window.addEventListener("load", () => {
     setTimeout(() => {
 
-      // Start invitation from beginning
-      // if (window.__setInvitePlaying) {
-      //   window.__setInvitePlaying(false);
-      // }
-
-      // Reset all media
+      // Reset timeline position to the beginning
       document.querySelectorAll("video, audio").forEach(media => {
         try {
-          media.pause();
           media.currentTime = 0;
         } catch (e) {}
       });
+
+      // Keep audio UNMUTED
+      const audio = document.getElementById("weddingMusic");
+
+      if (audio) {
+        audio.muted = false;
+        audio.volume = 1;
+        audio.currentTime = 0;
+      }
 
     }, 300);
   });
