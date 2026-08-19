@@ -10,7 +10,8 @@
   <meta property="og:description"
     content="You're invited to celebrate the wedding of Sasidhar & Vijaya on 26 August 2026 at Ramakrishna Function Hall, K Kotapadu, Visakhapatnam.">
   <meta property="og:image" content="https://pylajaganmohan.github.io/wedding-invitation/wedding-preview.jpg">
-  <meta property="og:image:secure_url" content="https://pylajaganmohan.github.io/wedding-invitation/wedding-preview.jpg">
+  <meta property="og:image:secure_url"
+    content="https://pylajaganmohan.github.io/wedding-invitation/wedding-preview.jpg">
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1024">
   <meta property="og:image:height" content="1536">
@@ -1773,195 +1774,194 @@
         padding-bottom: 2.5rem
       }
     }
-    
-    
   </style>
 
-<style id="wedding-opening-cover-style">
-  #weddingOpeningCover {
-    position: fixed;
-    inset: 0;
-    z-index: 1000000;
-    overflow: hidden;
-    background: #f5ead9;
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-    transition: opacity 1400ms ease, visibility 1400ms ease;
-  }
+  <style id="wedding-opening-cover-style">
+    #weddingOpeningCover {
+      position: fixed;
+      inset: 0;
+      z-index: 1000000;
+      overflow: hidden;
+      background: #f5ead9;
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transition: opacity 1400ms ease, visibility 1400ms ease;
+    }
 
-  #weddingOpeningCover.is-opening {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-  }
+    #weddingOpeningCover.is-opening {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
 
-  #weddingOpeningCoverImage {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center center;
-    user-select: none;
-    -webkit-user-drag: none;
-    animation: weddingCoverKenBurns 12s ease-in-out infinite alternate;
-  }
+    #weddingOpeningCoverImage {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      user-select: none;
+      -webkit-user-drag: none;
+      animation: weddingCoverKenBurns 12s ease-in-out infinite alternate;
+    }
 
-  /* Keep the floral artwork bright; only the very bottom is gently shaded. */
-  #weddingOpeningCover::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background:
-      linear-gradient(
-        to bottom,
-        rgba(255,255,255,0) 48%,
-        rgba(60,15,15,.025) 58%,
-        rgba(25,7,9,.22) 100%
-      );
-  }
+    /* Keep the floral artwork bright; only the very bottom is gently shaded. */
+    #weddingOpeningCover::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(to bottom,
+          rgba(255, 255, 255, 0) 48%,
+          rgba(60, 15, 15, .025) 58%,
+          rgba(25, 7, 9, .22) 100%);
+    }
 
-  .wedding-cover-frame {
-    position: absolute;
-    inset: 10px;
-    border: 1px solid rgba(122,16,42,.28);
-    border-radius: 16px;
-    pointer-events: none;
-    z-index: 8;
-    box-shadow: inset 0 0 30px rgba(255,255,255,.12);
-  }
+    .wedding-cover-frame {
+      position: absolute;
+      inset: 10px;
+      border: 1px solid rgba(122, 16, 42, .28);
+      border-radius: 16px;
+      pointer-events: none;
+      z-index: 8;
+      box-shadow: inset 0 0 30px rgba(255, 255, 255, .12);
+    }
 
-  .wedding-cover-frame::before {
-    content: "";
-    position: absolute;
-    inset: 6px;
-    border: 1px solid rgba(212,167,83,.38);
-    border-radius: 12px;
-  }
+    .wedding-cover-frame::before {
+      content: "";
+      position: absolute;
+      inset: 6px;
+      border: 1px solid rgba(212, 167, 83, .38);
+      border-radius: 12px;
+    }
 
-  /* ---------------- COVER TYPOGRAPHY ---------------- */
+    /* ---------------- COVER TYPOGRAPHY ---------------- */
 
-  .wedding-cover-details {
-    position: absolute;
-    z-index: 5;
-    top: 55%;
-    left: 50%;
-    width: min(84%, 360px);
-    transform: translateX(-50%);
-    text-align: center;
-    color: #7a102a;
-  }
+    .wedding-cover-details {
+      position: absolute;
+      z-index: 5;
+      top: 55%;
+      left: 50%;
+      width: min(84%, 360px);
+      transform: translateX(-50%);
+      text-align: center;
+      color: #7a102a;
+    }
 
-  .wedding-cover-details .cover-mantra, .wedding-cover-details .cover-invite-text, .wedding-cover-details .cover-name, .wedding-cover-details .wedding-open-label { color: #67011b !important; }
+    .wedding-cover-details .cover-mantra,
+    .wedding-cover-details .cover-invite-text,
+    .wedding-cover-details .cover-name,
+    .wedding-cover-details .wedding-open-label {
+      color: #67011b !important;
+    }
 
-  .cover-mantra {
-    font-family: "Playfair Display", Georgia, serif;
-    font-size: clamp(10px, 2.35vw, 12px);
-    font-weight: 600;
-    letter-spacing: .25em;
-    text-transform: uppercase;
-    white-space: nowrap;
-    color: #560015;
-  }
+    .cover-mantra {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(10px, 2.35vw, 12px);
+      font-weight: 600;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      color: #560015;
+    }
 
-  .cover-divider {
-    width: 110px;
-    height: 1px;
-    margin: 13px auto 15px;
-    background:
-      linear-gradient(
-        90deg,
-        transparent,
-        #d4a753 20%,
-        #d4a753 45%,
-        transparent 50%,
-        #d4a753 55%,
-        #d4a753 80%,
-        transparent
-      );
-    position: relative;
-  }
+    .cover-divider {
+      width: 110px;
+      height: 1px;
+      margin: 13px auto 15px;
+      background:
+        linear-gradient(90deg,
+          transparent,
+          #d4a753 20%,
+          #d4a753 45%,
+          transparent 50%,
+          #d4a753 55%,
+          #d4a753 80%,
+          transparent);
+      position: relative;
+    }
 
-  .cover-divider::after {
-    content: "✦";
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -55%);
-    padding: 0 6px;
-    background: rgba(248,238,221,.72);
-    color: #b8893b;
-    font-size: 9px;
-  }
+    .cover-divider::after {
+      content: "✦";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -55%);
+      padding: 0 6px;
+      background: rgba(248, 238, 221, .72);
+      color: #b8893b;
+      font-size: 9px;
+    }
 
-  .cover-invite-text {
-    max-width: 285px;
-    margin: 0 auto;
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: clamp(20px, 5vw, 24px);
-    line-height: 1.15;
-    font-weight: 600;
-    color: #560015;
-    text-shadow: 0 1px rgba(255,255,255,.75);
-  }
+    .cover-invite-text {
+      max-width: 285px;
+      margin: 0 auto;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(20px, 5vw, 24px);
+      line-height: 1.15;
+      font-weight: 600;
+      color: #560015;
+      text-shadow: 0 1px rgba(255, 255, 255, .75);
+    }
 
-  .cover-names-block {
-    margin-top: 20px;
-  }
+    .cover-names-block {
+      margin-top: 20px;
+    }
 
-  .cover-name {
-    font-family: "Great Vibes", "Brush Script MT", cursive;
-    font-size: clamp(43px, 13vw, 58px);
-    line-height: .82;
-    font-weight: 400;
-    color: #560015;
-    text-shadow:
-      0 1px rgba(255,255,255,.8),
-      0 2px 8px rgba(80,20,10,.08);
-  }
+    .cover-name {
+      font-family: "Great Vibes", "Brush Script MT", cursive;
+      font-size: clamp(43px, 13vw, 58px);
+      line-height: .82;
+      font-weight: 400;
+      color: #560015;
+      text-shadow:
+        0 1px rgba(255, 255, 255, .8),
+        0 2px 8px rgba(80, 20, 10, .08);
+    }
 
-  .cover-heart {
-    margin: 8px 0 6px;
-    color: #a51f3a;
-    font-family: Georgia, serif;
-    font-size: 18px;
-    line-height: 1;
-  }
+    .cover-heart {
+      margin: 8px 0 6px;
+      color: #a51f3a;
+      font-family: Georgia, serif;
+      font-size: 18px;
+      line-height: 1;
+    }
 
-  .cover-date {
-    margin-top: 13px;
-    font-family: "Playfair Display", Georgia, serif;
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: .20em;
-    text-transform: uppercase;
-    color: #610101;
-  }
+    .cover-date {
+      margin-top: 13px;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .20em;
+      text-transform: uppercase;
+      color: #610101;
+    }
 
-  .cover-date::before,
-  .cover-date::after {
-    content: "—";
-    margin: 0 8px;
-    color: #b8893b;
-  }
+    .cover-date::before,
+    .cover-date::after {
+      content: "—";
+      margin: 0 8px;
+      color: #b8893b;
+    }
 
-  /* ---------------- OPEN INVITATION ---------------- */
+    /* ---------------- OPEN INVITATION ---------------- */
 
-  .wedding-open-area {
-    position: absolute;
-    left: 50%;
-    top: 59.5%;
-    transform: translateX(-50%);
-    z-index: 10;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
+    .wedding-open-area {
+      position: absolute;
+      left: 50%;
+      top: 59.5%;
+      transform: translateX(-50%);
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
 
-  #weddingOpenButton {
+    /* #weddingOpenButton {
     position: relative;
     width: 72px;
     height: 72px;
@@ -1980,43 +1980,106 @@
       0 5px 18px rgba(80,35,15,.14),
       0 0 0 5px rgba(212,167,83,.08);
     transition: transform .22s ease, background .22s ease;
-  }
+  } */
 
-  #weddingOpenButton::before {
+    #weddingOpenButton {
+      position: relative;
+      width: 78px;
+      height: 78px;
+      border: 2px solid #d4a753;
+      border-radius: 50%;
+      background: rgba(255, 248, 239, 0.96);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+
+      display: grid;
+      place-items: center;
+      padding: 0;
+
+      cursor: pointer;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+
+      box-shadow:
+        0 6px 20px rgba(80, 35, 15, 0.22),
+        0 0 0 5px rgba(212, 167, 83, 0.12);
+
+      animation: weddingOpenButtonFloat 2.2s ease-in-out infinite;
+
+      transition:
+        transform .2s ease,
+        background .2s ease,
+        box-shadow .2s ease;
+    }
+
+    /* #weddingOpenButton::before {
     content: "";
     position: absolute;
     inset: -7px;
     border: 1px solid rgba(184,137,59,.38);
     border-radius: 50%;
     animation: weddingOpenPulse 2.5s ease-in-out infinite;
-  }
+  } */
+    #weddingOpenButton::before {
+      content: "";
+      position: absolute;
+      inset: -8px;
+      border: 2px solid rgba(212, 167, 83, .55);
+      border-radius: 50%;
+      animation: fingerprintRipple 2.4s ease-out infinite;
+    }
 
-  #weddingOpenButton::after {
-    content: "";
-    position: absolute;
-    inset: -13px;
-    border: 1px solid rgba(184,137,59,.16);
-    border-radius: 50%;
-    animation: weddingOpenPulse 2.5s ease-in-out .7s infinite;
-  }
+    /* #weddingOpenButton::after {
+      content: "";
+      position: absolute;
+      inset: -13px;
+      border: 1px solid rgba(184, 137, 59, .16);
+      border-radius: 50%;
+      animation: weddingOpenPulse 2.5s ease-in-out .7s infinite;
+    } */
 
-  #weddingOpenButton:hover {
+    #weddingOpenButton::after {
+      content: "";
+      position: absolute;
+      inset: -8px;
+      border: 1px solid rgba(212, 167, 83, .35);
+      border-radius: 50%;
+      animation: fingerprintRipple 2.4s ease-out .8s infinite;
+    }
+
+    /* #weddingOpenButton:hover {
     transform: scale(1.045);
     background: rgba(255,250,238,.9);
-  }
+  } */
 
-  #weddingOpenButton:active {
-    transform: scale(.93);
-  }
+    #weddingOpenButton:hover {
+      transform: scale(1.1);
+      background: #fff8ef;
 
-  .wedding-open-icon {
+      box-shadow:
+        0 10px 28px rgba(80, 35, 15, 0.28),
+        0 0 0 7px rgba(212, 167, 83, 0.18);
+    }
+
+    #weddingOpenButton:active {
+      transform: scale(.92);
+    }
+
+    /* .wedding-open-icon {
     width: 56px;
     height: 56px;
     overflow: visible;
     filter: drop-shadow(0 2px 5px rgba(70,20,20,.18));
-  }
+  } */
 
-  .wedding-open-label {
+    .wedding-open-icon {
+      width: 50px;
+      height: 50px;
+      overflow: visible;
+      filter: drop-shadow(0 2px 5px rgba(70, 20, 20, .22));
+    }
+
+    /* .wedding-open-label {
     margin-top: 10px;
     color: #490303;
     font-family: "Playfair Display", Georgia, serif;
@@ -2025,88 +2088,143 @@
     letter-spacing: .20em;
     text-transform: uppercase;
     text-shadow: 0 1px rgba(255,255,255,.85);
-  }
+  } */
 
-  .wedding-open-names {
-    display: none;
-  }
+    .wedding-open-label {
+      margin-top: 12px;
+      color: #67011b;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      text-shadow: 0 1px rgba(194, 135, 135, 0.9);
+    }
 
-  #weddingOpeningCover.is-opening #weddingOpeningCoverImage {
-    animation: weddingCoverExit 1500ms cubic-bezier(.65,0,.35,1) forwards;
-  }
+    .wedding-open-names {
+      display: none;
+    }
 
-  #weddingOpeningCover.is-opening .wedding-cover-details,
-  #weddingOpeningCover.is-opening .wedding-open-area {
-    animation: weddingOpenExit 650ms ease forwards;
-  }
+    #weddingOpeningCover.is-opening #weddingOpeningCoverImage {
+      animation: weddingCoverExit 1500ms cubic-bezier(.65, 0, .35, 1) forwards;
+    }
 
-  @keyframes weddingCoverKenBurns {
-    from { transform: scale(1); }
-    to { transform: scale(1.025); }
-  }
+    #weddingOpeningCover.is-opening .wedding-cover-details,
+    #weddingOpeningCover.is-opening .wedding-open-area {
+      animation: weddingOpenExit 650ms ease forwards;
+    }
 
-  @keyframes weddingOpenPulse {
-    0%, 100% { transform: scale(.94); opacity: .15; }
-    50% { transform: scale(1.07); opacity: .65; }
-  }
+    @keyframes fingerprintRipple {
+      0% {
+        transform: scale(1);
+        opacity: .8;
+      }
 
-  /* @keyframes weddingCoverExit {
+      70% {
+        transform: scale(1.35);
+        opacity: .25;
+      }
+
+      100% {
+        transform: scale(1.55);
+        opacity: 0;
+      }
+    }
+
+    @keyframes weddingOpenButtonFloat {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-8px);
+      }
+    }
+
+    @keyframes weddingCoverKenBurns {
+      from {
+        transform: scale(1);
+      }
+
+      to {
+        transform: scale(1.025);
+      }
+    }
+
+    @keyframes weddingOpenPulse {
+
+      0%,
+      100% {
+        transform: scale(.94);
+        opacity: .15;
+      }
+
+      50% {
+        transform: scale(1.07);
+        opacity: .65;
+      }
+    }
+
+    /* @keyframes weddingCoverExit {
     to {
       transform: scale(1.055);
       filter: brightness(1.04);
     }
   } */
 
-@keyframes weddingCoverExit {
-  from {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  to {
-    opacity: 0;
-    transform: translateY(-100%);
-  }
-}
+    @keyframes weddingCoverExit {
+      from {
+        opacity: 1;
+        transform: translateY(0);
+      }
 
-  @keyframes weddingOpenExit {
-    to {
-      opacity: 0;
-      transform: translateY(8px) scale(.98);
-    }
-  }
-
-  @media (max-width: 430px) {
-    .wedding-cover-details {
-      top: 38%;
-      width: 84%;
-      transform: translate(-50%, -50%);
+      to {
+        opacity: 0;
+        transform: translateY(-100%);
+      }
     }
 
-    .cover-invite-text {
-      max-width: 280px;
-      font-size: 18px;
+    @keyframes weddingOpenExit {
+      to {
+        opacity: 0;
+        transform: translateY(8px) scale(.98);
+      }
     }
 
-    .cover-name {
-      font-size: 50px;
+    @media (max-width: 430px) {
+      .wedding-cover-details {
+        top: 38%;
+        width: 84%;
+        transform: translate(-50%, -50%);
+      }
+
+      .cover-invite-text {
+        max-width: 280px;
+        font-size: 18px;
+      }
+
+      .cover-name {
+        font-size: 50px;
+      }
+
+      .wedding-open-area {
+        top: 59.5%;
+      }
+
+      #weddingOpenButton {
+        width: 68px;
+        height: 68px;
+      }
+
+      .wedding-open-icon {
+        width: 52px;
+        height: 52px;
+      }
     }
 
-    .wedding-open-area {
-      top: 59.5%;
-    }
-
-    #weddingOpenButton {
-      width: 68px;
-      height: 68px;
-    }
-
-    .wedding-open-icon {
-      width: 52px;
-      height: 52px;
-    }
-  }
-
-  /* @media (max-height: 700px) {
+    /* @media (max-height: 700px) {
     .wedding-cover-details {
       top: 8%;
     } */
@@ -2127,27 +2245,28 @@
     .wedding-open-area {
       top: 58%;
     }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    #weddingOpeningCoverImage,
-    #weddingOpenButton::before,
-    #weddingOpenButton::after {
-      animation: none;
     }
-  }
-</style>
+
+    @media (prefers-reduced-motion: reduce) {
+
+      #weddingOpeningCoverImage,
+      #weddingOpenButton::before,
+      #weddingOpenButton::after {
+        animation: none;
+      }
+    }
+  </style>
 
 
-<style id="wedding-root-cover-lock">
-  #root {
-    visibility: hidden;
-  }
+  <style id="wedding-root-cover-lock">
+    #root {
+      visibility: hidden;
+    }
 
-  body.wedding-invitation-open #root {
-    visibility: visible;
-  }
-</style>
+    body.wedding-invitation-open #root {
+      visibility: visible;
+    }
+  </style>
 
 </head>
 
@@ -2159,11 +2278,7 @@
   ========================================================== -->
   <div id="weddingOpeningCover" aria-label="Wedding invitation cover">
 
-    <img
-      id="weddingOpeningCoverImage"
-      src="images/wedding-cover.jpg"
-      alt="Sasidhar and Vijaya wedding invitation"
-    >
+    <img id="weddingOpeningCoverImage" src="images/wedding-cover.jpg" alt="Sasidhar and Vijaya wedding invitation">
 
     <div class="wedding-cover-frame"></div>
 
@@ -2186,111 +2301,35 @@
     </div>
 
     <div class="wedding-open-area">
-      <button
-        id="weddingOpenButton"
-        type="button"
-        aria-label="Open invitation"
-      >
-        <svg
-          class="wedding-open-icon"
-          viewBox="0 0 100 100"
-          aria-hidden="true"
-        >
+      <button id="weddingOpenButton" type="button" aria-label="Open invitation">
+        <svg class="wedding-open-icon" viewBox="0 0 100 100" aria-hidden="true">
           <!-- ornamental outer seal -->
-          <circle
-            cx="50" cy="50" r="35"
-            fill="none"
-            stroke="#d4af63"
-            stroke-width="1.2"
-          />
-          <circle
-            cx="50" cy="50" r="30"
-            fill="none"
-            stroke="#d4af63"
-            stroke-width=".7"
-            stroke-dasharray="2 4"
-            opacity=".75"
-          />
+          <circle cx="50" cy="50" r="35" fill="none" stroke="#d4af63" stroke-width="1.2" />
+          <circle cx="50" cy="50" r="30" fill="none" stroke="#d4af63" stroke-width=".7" stroke-dasharray="2 4"
+            opacity=".75" />
 
           <!-- wedding doorway -->
-          <path
-            d="M29 70V39Q50 19 71 39V70"
-            fill="none"
-            stroke="#d4af63"
-            stroke-width="2"
-            stroke-linejoin="round"
-          />
+          <path d="M29 70V39Q50 19 71 39V70" fill="none" stroke="#d4af63" stroke-width="2" stroke-linejoin="round" />
 
           <!-- bride -->
-          <circle
-            cx="44" cy="48" r="4"
-            fill="none"
-            stroke="#fff"
-            stroke-width="1.5"
-          />
-          <path
-            d="M39 54Q44 50 49 54L50 67Q44 72 38 67Z"
-            fill="none"
-            stroke="#fff"
-            stroke-width="1.5"
-          />
-          <path
-            d="M41 46Q33 50 35 61"
-            fill="none"
-            stroke="#d4af63"
-            stroke-width="1.2"
-            stroke-linecap="round"
-          />
+          <circle cx="44" cy="48" r="4" fill="none" stroke="#fff" stroke-width="1.5" />
+          <path d="M39 54Q44 50 49 54L50 67Q44 72 38 67Z" fill="none" stroke="#fff" stroke-width="1.5" />
+          <path d="M41 46Q33 50 35 61" fill="none" stroke="#d4af63" stroke-width="1.2" stroke-linecap="round" />
 
           <!-- groom -->
-          <circle
-            cx="57" cy="48" r="4"
-            fill="none"
-            stroke="#fff"
-            stroke-width="1.5"
-          />
-          <path
-            d="M52 54Q57 50 62 54L63 67Q57 72 51 67Z"
-            fill="none"
-            stroke="#fff"
-            stroke-width="1.5"
-          />
-          <path
-            d="M53 45Q57 40 61 46"
-            fill="none"
-            stroke="#d4af63"
-            stroke-width="1.2"
-            stroke-linecap="round"
-          />
+          <circle cx="57" cy="48" r="4" fill="none" stroke="#fff" stroke-width="1.5" />
+          <path d="M52 54Q57 50 62 54L63 67Q57 72 51 67Z" fill="none" stroke="#fff" stroke-width="1.5" />
+          <path d="M53 45Q57 40 61 46" fill="none" stroke="#d4af63" stroke-width="1.2" stroke-linecap="round" />
 
           <!-- joined hands -->
-          <path
-            d="M48 57Q52 54 55 57"
-            fill="none"
-            stroke="#d4af63"
-            stroke-width="1.7"
-            stroke-linecap="round"
-          />
+          <path d="M48 57Q52 54 55 57" fill="none" stroke="#d4af63" stroke-width="1.7" stroke-linecap="round" />
 
           <!-- heart -->
-          <path
-            d="M50 34C46 29 40 34 50 41C60 34 54 29 50 34Z"
-            fill="#d9a0a8"
-          />
+          <path d="M50 34C46 29 40 34 50 41C60 34 54 29 50 34Z" fill="#d9a0a8" />
 
           <!-- footprints -->
-          <ellipse
-            cx="45" cy="79"
-            rx="3" ry="6"
-            fill="#d4af63"
-            transform="rotate(-15 45 79)"
-          />
-          <ellipse
-            cx="59" cy="79"
-            rx="3" ry="6"
-            fill="#d4af63"
-            transform="rotate(15 59 79)"
-          />
+          <ellipse cx="45" cy="79" rx="3" ry="6" fill="#d4af63" transform="rotate(-15 45 79)" />
+          <ellipse cx="59" cy="79" rx="3" ry="6" fill="#d4af63" transform="rotate(15 59 79)" />
         </svg>
       </button>
 
