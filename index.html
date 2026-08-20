@@ -4,14 +4,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0d0c0c">
   <!-- Open Graph / Social Media Preview -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Sasidhar ❤️ Vijaya — Wedding Invitation">
   <meta property="og:description"
     content="You're invited to celebrate the wedding of Sasidhar & Vijaya on 26 August 2026 at Ramakrishna Function Hall, K Kotapadu, Visakhapatnam.">
   <meta property="og:image" content="https://pylajaganmohan.github.io/wedding-invitation/wedding-preview.jpg">
-  <meta property="og:image:secure_url"
-    content="https://pylajaganmohan.github.io/wedding-invitation/wedding-preview.jpg">
+  <meta property="og:image:secure_url" content="https://pylajaganmohan.github.io/wedding-invitation/wedding-preview.jpg">
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1024">
   <meta property="og:image:height" content="1536">
@@ -1774,312 +1774,261 @@
         padding-bottom: 2.5rem
       }
     }
+    
+    
   </style>
 
-  <style id="wedding-opening-cover-style">
-    #weddingOpeningCover {
-      position: fixed;
-      inset: 0;
-      z-index: 1000000;
-      overflow: hidden;
-      background: #f5ead9;
-      opacity: 1;
-      visibility: visible;
-      pointer-events: auto;
-      transition: opacity 1400ms ease, visibility 1400ms ease;
-    }
+<style id="wedding-opening-cover-style">
+  #weddingOpeningCover {
+    position: fixed;
+    inset: 0;
+    z-index: 1000000;
+    overflow: hidden;
+    background: #f5ead9;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition: opacity 1400ms ease, visibility 1400ms ease;
+  }
 
-    #weddingOpeningCover.is-opening {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-    }
+  #weddingOpeningCover.is-opening {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
 
-    #weddingOpeningCoverImage {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center center;
-      user-select: none;
-      -webkit-user-drag: none;
-      animation: weddingCoverKenBurns 12s ease-in-out infinite alternate;
-    }
+  #weddingOpeningCoverImage {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    user-select: none;
+    -webkit-user-drag: none;
+    animation: weddingCoverKenBurns 12s ease-in-out infinite alternate;
+  }
 
-    /* Keep the floral artwork bright; only the very bottom is gently shaded. */
-    #weddingOpeningCover::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background:
-        linear-gradient(to bottom,
-          rgba(255, 255, 255, 0) 48%,
-          rgba(60, 15, 15, .025) 58%,
-          rgba(25, 7, 9, .22) 100%);
-    }
-
-    .wedding-cover-frame {
-      position: absolute;
-      inset: 10px;
-      border: 1px solid rgba(122, 16, 42, .28);
-      border-radius: 16px;
-      pointer-events: none;
-      z-index: 8;
-      box-shadow: inset 0 0 30px rgba(255, 255, 255, .12);
-    }
-
-    .wedding-cover-frame::before {
-      content: "";
-      position: absolute;
-      inset: 6px;
-      border: 1px solid rgba(212, 167, 83, .38);
-      border-radius: 12px;
-    }
-
-    /* ---------------- COVER TYPOGRAPHY ---------------- */
-
-    .wedding-cover-details {
-      position: absolute;
-      z-index: 5;
-      top: 55%;
-      left: 50%;
-      width: min(84%, 360px);
-      transform: translateX(-50%);
-      text-align: center;
-      color: #7a102a;
-    }
-
-    .wedding-cover-details .cover-mantra,
-    .wedding-cover-details .cover-invite-text,
-    .wedding-cover-details .cover-name,
-    .wedding-cover-details .wedding-open-label {
-      color: #67011b !important;
-    }
-
-    .cover-mantra {
-      font-family: "Playfair Display", Georgia, serif;
-      font-size: clamp(10px, 2.35vw, 12px);
-      font-weight: 600;
-      letter-spacing: .25em;
-      text-transform: uppercase;
-      white-space: nowrap;
-      color: #560015;
-    }
-
-    .cover-divider {
-      width: 110px;
-      height: 1px;
-      margin: 13px auto 15px;
-      background:
-        linear-gradient(90deg,
-          transparent,
-          #d4a753 20%,
-          #d4a753 45%,
-          transparent 50%,
-          #d4a753 55%,
-          #d4a753 80%,
-          transparent);
-      position: relative;
-    }
-
-    .cover-divider::after {
-      content: "✦";
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -55%);
-      padding: 0 6px;
-      background: rgba(248, 238, 221, .72);
-      color: #b8893b;
-      font-size: 9px;
-    }
-
-    .cover-invite-text {
-      max-width: 285px;
-      margin: 0 auto;
-      font-family: "Cormorant Garamond", Georgia, serif;
-      font-size: clamp(20px, 5vw, 24px);
-      line-height: 1.15;
-      font-weight: 600;
-      color: #560015;
-      text-shadow: 0 1px rgba(255, 255, 255, .75);
-    }
-
-    .cover-names-block {
-      margin-top: 20px;
-    }
-
-    .cover-name {
-      font-family: "Great Vibes", "Brush Script MT", cursive;
-      font-size: clamp(43px, 13vw, 58px);
-      line-height: .82;
-      font-weight: 400;
-      color: #560015;
-      text-shadow:
-        0 1px rgba(255, 255, 255, .8),
-        0 2px 8px rgba(80, 20, 10, .08);
-    }
-
-    .cover-heart {
-      margin: 8px 0 6px;
-      color: #a51f3a;
-      font-family: Georgia, serif;
-      font-size: 18px;
-      line-height: 1;
-    }
-
-    .cover-date {
-      margin-top: 13px;
-      font-family: "Playfair Display", Georgia, serif;
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: .20em;
-      text-transform: uppercase;
-      color: #610101;
-    }
-
-    .cover-date::before,
-    .cover-date::after {
-      content: "—";
-      margin: 0 8px;
-      color: #b8893b;
-    }
-
-    /* ---------------- OPEN INVITATION ---------------- */
-
-    .wedding-open-area {
-      position: absolute;
-      left: 50%;
-      top: 59.5%;
-      transform: translateX(-50%);
-      z-index: 10;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-
-    /* #weddingOpenButton {
-    position: relative;
-    width: 72px;
-    height: 72px;
-    border: 1px solid rgba(126, 4, 34, 0.737);
-    border-radius: 50%;
-    background: rgba(255,248,239,.72);
-    backdrop-filter: blur(3px);
-    -webkit-backdrop-filter: blur(3px);
-    display: grid;
-    place-items: center;
-    padding: 0;
-    cursor: pointer;
-    touch-action: manipulation;
-    -webkit-tap-highlight-color: transparent;
-    box-shadow:
-      0 5px 18px rgba(80,35,15,.14),
-      0 0 0 5px rgba(212,167,83,.08);
-    transition: transform .22s ease, background .22s ease;
-  } */
-
-    #weddingOpenButton {
-      position: relative;
-      width: 78px;
-      height: 78px;
-      border: 2px solid #d4a753;
-      border-radius: 50%;
-      background: rgba(255, 248, 239, 0.96);
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
-
-      display: grid;
-      place-items: center;
-      padding: 0;
-
-      cursor: pointer;
-      touch-action: manipulation;
-      -webkit-tap-highlight-color: transparent;
-
-      box-shadow:
-        0 6px 20px rgba(80, 35, 15, 0.22),
-        0 0 0 5px rgba(212, 167, 83, 0.12);
-
-      animation: weddingOpenButtonFloat 2.2s ease-in-out infinite;
-
-      transition:
-        transform .2s ease,
-        background .2s ease,
-        box-shadow .2s ease;
-    }
-
-    /* #weddingOpenButton::before {
+  /* Keep the floral artwork bright; only the very bottom is gently shaded. */
+  #weddingOpeningCover::after {
     content: "";
     position: absolute;
-    inset: -7px;
-    border: 1px solid rgba(184,137,59,.38);
-    border-radius: 50%;
-    animation: weddingOpenPulse 2.5s ease-in-out infinite;
-  } */
-    #weddingOpenButton::before {
-      content: "";
-      position: absolute;
-      inset: -8px;
-      border: 2px solid rgba(212, 167, 83, .55);
-      border-radius: 50%;
-      animation: fingerprintRipple 2.4s ease-out infinite;
-    }
+    inset: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(255,255,255,0) 48%,
+        rgba(60,15,15,.025) 58%,
+        rgba(25,7,9,.22) 100%
+      );
+  }
 
-    /* #weddingOpenButton::after {
-      content: "";
-      position: absolute;
-      inset: -13px;
-      border: 1px solid rgba(184, 137, 59, .16);
-      border-radius: 50%;
-      animation: weddingOpenPulse 2.5s ease-in-out .7s infinite;
-    } */
+  .wedding-cover-frame {
+    position: absolute;
+    inset: 10px;
+    border: 1px solid rgba(122,16,42,.28);
+    border-radius: 16px;
+    pointer-events: none;
+    z-index: 8;
+    box-shadow: inset 0 0 30px rgba(255,255,255,.12);
+  }
 
-    #weddingOpenButton::after {
-      content: "";
-      position: absolute;
-      inset: -8px;
-      border: 1px solid rgba(212, 167, 83, .35);
-      border-radius: 50%;
-      animation: fingerprintRipple 2.4s ease-out .8s infinite;
-    }
+  .wedding-cover-frame::before {
+    content: "";
+    position: absolute;
+    inset: 6px;
+    border: 1px solid rgba(212,167,83,.38);
+    border-radius: 12px;
+  }
 
-    /* #weddingOpenButton:hover {
+  /* ---------------- COVER TYPOGRAPHY ---------------- */
+
+  .wedding-cover-details {
+    position: absolute;
+    z-index: 5;
+    top: 55%;
+    left: 50%;
+    width: min(84%, 360px);
+    transform: translateX(-50%);
+    text-align: center;
+    color: #7a102a;
+  }
+
+  .wedding-cover-details .cover-mantra, .wedding-cover-details .cover-invite-text, .wedding-cover-details .cover-name, .wedding-cover-details .wedding-open-label { color: #67011b !important; }
+
+  .cover-mantra {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: clamp(10px, 2.35vw, 12px);
+    font-weight: 600;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: #560015;
+  }
+
+  .cover-divider {
+    width: 110px;
+    height: 1px;
+    margin: 13px auto 15px;
+    background:
+      linear-gradient(
+        90deg,
+        transparent,
+        #d4a753 20%,
+        #d4a753 45%,
+        transparent 50%,
+        #d4a753 55%,
+        #d4a753 80%,
+        transparent
+      );
+    position: relative;
+  }
+
+  .cover-divider::after {
+    content: "✦";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -55%);
+    padding: 0 6px;
+    background: rgba(248,238,221,.72);
+    color: #b8893b;
+    font-size: 9px;
+  }
+
+  .cover-invite-text {
+    max-width: 285px;
+    margin: 0 auto;
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: clamp(20px, 5vw, 24px);
+    line-height: 1.15;
+    font-weight: 600;
+    color: #560015;
+    text-shadow: 0 1px rgba(255,255,255,.75);
+  }
+
+  .cover-names-block {
+    margin-top: 20px;
+  }
+
+  .cover-name {
+    font-family: "Great Vibes", "Brush Script MT", cursive;
+    font-size: clamp(43px, 13vw, 58px);
+    line-height: .82;
+    font-weight: 400;
+    color: #560015;
+    text-shadow:
+      0 1px rgba(255,255,255,.8),
+      0 2px 8px rgba(80,20,10,.08);
+  }
+
+  .cover-heart {
+    margin: 8px 0 6px;
+    color: #a51f3a;
+    font-family: Georgia, serif;
+    font-size: 18px;
+    line-height: 1;
+  }
+
+  .cover-date {
+    margin-top: 13px;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .20em;
+    text-transform: uppercase;
+    color: #610101;
+  }
+
+  .cover-date::before,
+  .cover-date::after {
+    content: "—";
+    margin: 0 8px;
+    color: #b8893b;
+  }
+
+  /* ---------------- OPEN INVITATION ---------------- */
+
+  .wedding-open-area {
+    position: absolute;
+    left: 50%;
+    top: 59.5%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+ #weddingOpenButton { 
+  position: relative; 
+  width: 78px; 
+  height: 78px; 
+  border: 2px solid #B88A2E; 
+  border-radius: 50%; 
+  background: rgba(83, 74, 63, 0.96); 
+  backdrop-filter: blur(4px); 
+  -webkit-backdrop-filter: blur(4px); 
+
+  display: grid; 
+  place-items: center; 
+  padding: 0; 
+
+  cursor: pointer; 
+  touch-action: manipulation; 
+  -webkit-tap-highlight-color: transparent; 
+
+  box-shadow: 
+    0 6px 20px rgba(0, 0, 0, 0.30), 
+    0 0 0 5px rgba(184, 138, 46, 0.16); 
+
+  animation: weddingOpenButtonFloat 2.2s ease-in-out infinite; 
+
+  transition: 
+    transform .2s ease, 
+    background .2s ease, 
+    box-shadow .2s ease; 
+}
+
+
+#weddingOpenButton::before { 
+  content: ""; 
+  position: absolute; 
+  inset: -8px; 
+  border: 2px solid rgba(184, 138, 46, .55); 
+  border-radius: 50%; 
+  animation: fingerprintRipple 2.4s ease-out infinite; 
+}
+
+
+#weddingOpenButton::after { 
+  content: ""; 
+  position: absolute; 
+  inset: -8px; 
+  border: 1px solid rgba(184, 138, 46, .35); 
+  border-radius: 50%; 
+  animation: fingerprintRipple 2.4s ease-out .8s infinite; 
+}
+
+  #weddingOpenButton:hover {
     transform: scale(1.045);
     background: rgba(255,250,238,.9);
-  } */
+  }
 
-    #weddingOpenButton:hover {
-      transform: scale(1.1);
-      background: #fff8ef;
+  #weddingOpenButton:active {
+    transform: scale(.93);
+  }
 
-      box-shadow:
-        0 10px 28px rgba(80, 35, 15, 0.28),
-        0 0 0 7px rgba(212, 167, 83, 0.18);
-    }
-
-    #weddingOpenButton:active {
-      transform: scale(.92);
-    }
-
-    /* .wedding-open-icon {
+  .wedding-open-icon {
     width: 56px;
     height: 56px;
     overflow: visible;
     filter: drop-shadow(0 2px 5px rgba(70,20,20,.18));
-  } */
+  }
 
-    .wedding-open-icon {
-      width: 50px;
-      height: 50px;
-      overflow: visible;
-      filter: drop-shadow(0 2px 5px rgba(70, 20, 20, .22));
-    }
-
-    /* .wedding-open-label {
+  .wedding-open-label {
     margin-top: 10px;
     color: #490303;
     font-family: "Playfair Display", Georgia, serif;
@@ -2088,33 +2037,22 @@
     letter-spacing: .20em;
     text-transform: uppercase;
     text-shadow: 0 1px rgba(255,255,255,.85);
-  } */
+  }
 
-    .wedding-open-label {
-      margin-top: 12px;
-      color: #67011b;
-      font-family: "Playfair Display", Georgia, serif;
-      font-size: 10px;
-      font-weight: 900;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      text-shadow: 0 1px rgba(194, 135, 135, 0.9);
-    }
+  .wedding-open-names {
+    display: none;
+  }
 
-    .wedding-open-names {
-      display: none;
-    }
+  #weddingOpeningCover.is-opening #weddingOpeningCoverImage {
+    animation: weddingCoverExit 1500ms cubic-bezier(.65,0,.35,1) forwards;
+  }
 
-    #weddingOpeningCover.is-opening #weddingOpeningCoverImage {
-      animation: weddingCoverExit 1500ms cubic-bezier(.65, 0, .35, 1) forwards;
-    }
+  #weddingOpeningCover.is-opening .wedding-cover-details,
+  #weddingOpeningCover.is-opening .wedding-open-area {
+    animation: weddingOpenExit 650ms ease forwards;
+  }
 
-    #weddingOpeningCover.is-opening .wedding-cover-details,
-    #weddingOpeningCover.is-opening .wedding-open-area {
-      animation: weddingOpenExit 650ms ease forwards;
-    }
-
-    @keyframes fingerprintRipple {
+@keyframes fingerprintRipple {
       0% {
         transform: scale(1);
         opacity: .8;
@@ -2142,89 +2080,73 @@
         transform: translateY(-8px);
       }
     }
+  @keyframes weddingCoverKenBurns {
+    from { transform: scale(1); }
+    to { transform: scale(1.025); }
+  }
 
-    @keyframes weddingCoverKenBurns {
-      from {
-        transform: scale(1);
-      }
+  @keyframes weddingOpenPulse {
+    0%, 100% { transform: scale(.94); opacity: .15; }
+    50% { transform: scale(1.07); opacity: .65; }
+  }
 
-      to {
-        transform: scale(1.025);
-      }
-    }
-
-    @keyframes weddingOpenPulse {
-
-      0%,
-      100% {
-        transform: scale(.94);
-        opacity: .15;
-      }
-
-      50% {
-        transform: scale(1.07);
-        opacity: .65;
-      }
-    }
-
-    /* @keyframes weddingCoverExit {
+  /* @keyframes weddingCoverExit {
     to {
       transform: scale(1.055);
       filter: brightness(1.04);
     }
   } */
 
-    @keyframes weddingCoverExit {
-      from {
-        opacity: 1;
-        transform: translateY(0);
-      }
+@keyframes weddingCoverExit {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+}
 
-      to {
-        opacity: 0;
-        transform: translateY(-100%);
-      }
+  @keyframes weddingOpenExit {
+    to {
+      opacity: 0;
+      transform: translateY(8px) scale(.98);
+    }
+  }
+
+  @media (max-width: 430px) {
+    .wedding-cover-details {
+      top: 38%;
+      width: 84%;
+      transform: translate(-50%, -50%);
     }
 
-    @keyframes weddingOpenExit {
-      to {
-        opacity: 0;
-        transform: translateY(8px) scale(.98);
-      }
+    .cover-invite-text {
+      max-width: 280px;
+      font-size: 18px;
     }
 
-    @media (max-width: 430px) {
-      .wedding-cover-details {
-        top: 38%;
-        width: 84%;
-        transform: translate(-50%, -50%);
-      }
-
-      .cover-invite-text {
-        max-width: 280px;
-        font-size: 18px;
-      }
-
-      .cover-name {
-        font-size: 50px;
-      }
-
-      .wedding-open-area {
-        top: 59.5%;
-      }
-
-      #weddingOpenButton {
-        width: 68px;
-        height: 68px;
-      }
-
-      .wedding-open-icon {
-        width: 52px;
-        height: 52px;
-      }
+    .cover-name {
+      font-size: 50px;
     }
 
-    /* @media (max-height: 700px) {
+    .wedding-open-area {
+      top: 59.5%;
+    }
+
+    #weddingOpenButton {
+      width: 68px;
+      height: 68px;
+    }
+
+    .wedding-open-icon {
+      width: 52px;
+      height: 52px;
+    }
+  }
+
+  /* @media (max-height: 700px) {
     .wedding-cover-details {
       top: 8%;
     } */
@@ -2245,28 +2167,201 @@
     .wedding-open-area {
       top: 58%;
     }
+
+  @media (prefers-reduced-motion: reduce) {
+    #weddingOpeningCoverImage,
+    #weddingOpenButton::before,
+    #weddingOpenButton::after {
+      animation: none;
     }
+  }
+</style>
 
-    @media (prefers-reduced-motion: reduce) {
 
-      #weddingOpeningCoverImage,
-      #weddingOpenButton::before,
-      #weddingOpenButton::after {
-        animation: none;
-      }
+<style id="wedding-root-cover-lock">
+  #root {
+    visibility: hidden;
+  }
+
+  body.wedding-invitation-open #root {
+    visibility: visible;
+  }
+</style>
+
+
+<style id="wedding-mobile-dark-palette">
+  /* Dark warm wedding palette for consistent rendering on mobile */
+  :root { color-scheme: dark; }
+  html, body {
+    background: #0d0c0c !important;
+    color: #f4ebe3;
+  }
+
+  /* Main invitation surfaces */
+  [class~="bg-[#fff8ef]"] {
+    background-color: #28221f !important;
+  }
+
+  [class~="bg-[#fff8ef]/95"] {
+    background-color: rgba(42, 35, 31, .94) !important;
+  }
+
+  /* Light cream decorative emblem on the first information slide */
+  [class*="from-[#fff8ef]"] {
+    background: linear-gradient(to bottom, #3a3029, #241f1b) !important;
+  }
+
+  /* Main dark cards */
+  [class~="bg-[#7a102a]/[0.06]"] {
+    background-color: rgba(122, 16, 42, .14) !important;
+  }
+
+  [class~="border-[#7a102a]/20"] {
+    border-color: rgba(184, 137, 59, .28) !important;
+  }
+
+  [class~="border-[#d4a753]/30"] {
+    border-color: rgba(212, 167, 83, .30) !important;
+  }
+
+  /* Typography used by the light information cards */
+  [class~="text-[#2b0f15]"] {
+    color: #f3e9df !important;
+  }
+
+  [class~="text-[#231219]"] {
+    color: #f4ebe3 !important;
+  }
+
+  [class~="text-[#5a2a36]"] {
+    color: #d8b8b8 !important;
+  }
+
+  [class~="text-[#7a102a]"] {
+    color: #e7b9bd !important;
+  }
+
+  [class~="text-[#7a102a]/60"] {
+    color: rgba(231, 185, 189, .72) !important;
+  }
+
+  [class~="text-[#7a102a]/50"] {
+    color: rgba(231, 185, 189, .56) !important;
+  }
+
+  /* Action buttons below the invitation */
+  [class~="bg-[#fff8ef]"] {
+    color: #f3e9df;
+  }
+
+  /* Keep the share card as the stronger maroon CTA */
+  [class~="bg-[#7a102a]"] {
+    background-color: #7a102a !important;
+  }
+
+  /* Gold/maroon mobile chrome */
+  body {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  @media (max-width: 430px) {
+    body {
+      background: #0d0c0c !important;
     }
-  </style>
+  }
+</style>
 
 
-  <style id="wedding-root-cover-lock">
-    #root {
-      visibility: hidden;
-    }
+<style id="wedding-exact-reference-palette">
+  /* Reference mobile palette: charcoal #171719, warm taupe cards #50473e, deep maroon #750d24 */
+  :root { color-scheme: dark; }
+  html, body {
+    background: #171719 !important;
+    color: #f5eee7 !important;
+  }
+  body { margin: 0; }
 
-    body.wedding-invitation-open #root {
-      visibility: visible;
-    }
-  </style>
+  /* Main invitation shell */
+  .min-h-screen {
+    background: #171719 !important;
+  }
+
+  /* Main portrait/card surface */
+  [class*="max-w-[430px]"][class*="bg-[#fff8ef]"] {
+    background: #171719 !important;
+    box-shadow: 0 25px 80px -15px rgba(0,0,0,.9), 0 0 0 1px rgba(212,167,83,.22) !important;
+  }
+
+  [class~="bg-[#fff8ef]"] {
+    background-color: #25211e !important;
+  }
+
+  /* First information cards: date / venue / reception */
+  [class*="rounded-[18px]"][class*="bg-[#fff8ef]/95"] {
+    background: #2b2825 !important;
+    border-color: rgba(212,167,83,.30) !important;
+    color: #f5eee7 !important;
+  }
+
+  /* Text on information cards */
+  [class~="text-[#2b0f15]"] { color: #f5eee7 !important; }
+  [class~="text-[#231219]"] { color: #f5eee7 !important; }
+  [class~="text-[#5a2a36]"] { color: #d7c0ba !important; }
+  [class~="text-[#7a102a]"] { color: #dcb7bb !important; }
+  [class*="text-[#7a102a]/60"] { color: rgba(220,183,187,.72) !important; }
+  [class*="text-[#7a102a]/50"] { color: rgba(220,183,187,.58) !important; }
+
+  /* Lower action cards — exact reference taupe */
+  [class*="group relative overflow-hidden rounded-[14px]"][class*="bg-[#fff8ef]"] {
+    background: #50473e !important;
+    border-color: rgba(212,167,83,.30) !important;
+    color: #f5eee7 !important;
+  }
+
+  [class*="group relative overflow-hidden rounded-[14px]"][class*="bg-[#7a102a]"] {
+    background: #750d24 !important;
+    border-color: #750d24 !important;
+  }
+
+  /* Action-card typography */
+  [class*="font-playfair text-[11px] font-semibold tracking-wide text-[#2b0f15]"] {
+    color: #f5eee7 !important;
+  }
+  [class*="font-cormorant text-[9px] text-[#7a102a]/60"] {
+    color: rgba(238,220,214,.70) !important;
+  }
+
+  /* White icon circles inside taupe cards */
+  [class*="w-9 h-9 rounded-full bg-white border"] {
+    background: rgba(23,23,25,.38) !important;
+    border-color: rgba(212,167,83,.45) !important;
+  }
+
+  /* Keep the maroon/gold icon colors */
+  [class~="bg-[#7a102a]"] { background-color: #750d24 !important; }
+  [class~="bg-[#d4a753]"] { background-color: #d4a753 !important; }
+
+  /* Decorative text and gold details */
+  [class~="text-[#f7d88a]"] { color: #f7d88a !important; }
+
+  /* Bottom player controls in the reference are dark translucent circles */
+  [class*="bg-white/15"] {
+    background-color: rgba(23,23,25,.70) !important;
+  }
+  [class*="bg-white/10"] {
+    background-color: rgba(23,23,25,.58) !important;
+  }
+  [class*="border-white/20"] { border-color: rgba(212,167,83,.20) !important; }
+  [class*="border-white/15"] { border-color: rgba(212,167,83,.16) !important; }
+
+  /* Progress/navigation dots remain white/gold like reference */
+  [class*="bg-white/20"] { background-color: rgba(255,255,255,.22) !important; }
+
+  /* Mobile and desktop use the same reference palette */
+  @media (max-width: 430px) {
+    html, body { background: #171719 !important; }
+  }
+</style>
 
 </head>
 
@@ -2278,7 +2373,11 @@
   ========================================================== -->
   <div id="weddingOpeningCover" aria-label="Wedding invitation cover">
 
-    <img id="weddingOpeningCoverImage" src="images/wedding-cover.jpg" alt="Sasidhar and Vijaya wedding invitation">
+    <img
+      id="weddingOpeningCoverImage"
+      src="images/wedding-cover.jpg"
+      alt="Sasidhar and Vijaya wedding invitation"
+    >
 
     <div class="wedding-cover-frame"></div>
 
@@ -2301,35 +2400,111 @@
     </div>
 
     <div class="wedding-open-area">
-      <button id="weddingOpenButton" type="button" aria-label="Open invitation">
-        <svg class="wedding-open-icon" viewBox="0 0 100 100" aria-hidden="true">
+      <button
+        id="weddingOpenButton"
+        type="button"
+        aria-label="Open invitation"
+      >
+        <svg
+          class="wedding-open-icon"
+          viewBox="0 0 100 100"
+          aria-hidden="true"
+        >
           <!-- ornamental outer seal -->
-          <circle cx="50" cy="50" r="35" fill="none" stroke="#d4af63" stroke-width="1.2" />
-          <circle cx="50" cy="50" r="30" fill="none" stroke="#d4af63" stroke-width=".7" stroke-dasharray="2 4"
-            opacity=".75" />
+          <circle
+            cx="50" cy="50" r="35"
+            fill="none"
+            stroke="#d4af63"
+            stroke-width="1.2"
+          />
+          <circle
+            cx="50" cy="50" r="30"
+            fill="none"
+            stroke="#d4af63"
+            stroke-width=".7"
+            stroke-dasharray="2 4"
+            opacity=".75"
+          />
 
           <!-- wedding doorway -->
-          <path d="M29 70V39Q50 19 71 39V70" fill="none" stroke="#d4af63" stroke-width="2" stroke-linejoin="round" />
+          <path
+            d="M29 70V39Q50 19 71 39V70"
+            fill="none"
+            stroke="#d4af63"
+            stroke-width="2"
+            stroke-linejoin="round"
+          />
 
           <!-- bride -->
-          <circle cx="44" cy="48" r="4" fill="none" stroke="#fff" stroke-width="1.5" />
-          <path d="M39 54Q44 50 49 54L50 67Q44 72 38 67Z" fill="none" stroke="#fff" stroke-width="1.5" />
-          <path d="M41 46Q33 50 35 61" fill="none" stroke="#d4af63" stroke-width="1.2" stroke-linecap="round" />
+          <circle
+            cx="44" cy="48" r="4"
+            fill="none"
+            stroke="#fff"
+            stroke-width="1.5"
+          />
+          <path
+            d="M39 54Q44 50 49 54L50 67Q44 72 38 67Z"
+            fill="none"
+            stroke="#fff"
+            stroke-width="1.5"
+          />
+          <path
+            d="M41 46Q33 50 35 61"
+            fill="none"
+            stroke="#d4af63"
+            stroke-width="1.2"
+            stroke-linecap="round"
+          />
 
           <!-- groom -->
-          <circle cx="57" cy="48" r="4" fill="none" stroke="#fff" stroke-width="1.5" />
-          <path d="M52 54Q57 50 62 54L63 67Q57 72 51 67Z" fill="none" stroke="#fff" stroke-width="1.5" />
-          <path d="M53 45Q57 40 61 46" fill="none" stroke="#d4af63" stroke-width="1.2" stroke-linecap="round" />
+          <circle
+            cx="57" cy="48" r="4"
+            fill="none"
+            stroke="#fff"
+            stroke-width="1.5"
+          />
+          <path
+            d="M52 54Q57 50 62 54L63 67Q57 72 51 67Z"
+            fill="none"
+            stroke="#fff"
+            stroke-width="1.5"
+          />
+          <path
+            d="M53 45Q57 40 61 46"
+            fill="none"
+            stroke="#d4af63"
+            stroke-width="1.2"
+            stroke-linecap="round"
+          />
 
           <!-- joined hands -->
-          <path d="M48 57Q52 54 55 57" fill="none" stroke="#d4af63" stroke-width="1.7" stroke-linecap="round" />
+          <path
+            d="M48 57Q52 54 55 57"
+            fill="none"
+            stroke="#d4af63"
+            stroke-width="1.7"
+            stroke-linecap="round"
+          />
 
           <!-- heart -->
-          <path d="M50 34C46 29 40 34 50 41C60 34 54 29 50 34Z" fill="#d9a0a8" />
+          <path
+            d="M50 34C46 29 40 34 50 41C60 34 54 29 50 34Z"
+            fill="#d9a0a8"
+          />
 
           <!-- footprints -->
-          <ellipse cx="45" cy="79" rx="3" ry="6" fill="#d4af63" transform="rotate(-15 45 79)" />
-          <ellipse cx="59" cy="79" rx="3" ry="6" fill="#d4af63" transform="rotate(15 59 79)" />
+          <ellipse
+            cx="45" cy="79"
+            rx="3" ry="6"
+            fill="#d4af63"
+            transform="rotate(-15 45 79)"
+          />
+          <ellipse
+            cx="59" cy="79"
+            rx="3" ry="6"
+            fill="#d4af63"
+            transform="rotate(15 59 79)"
+          />
         </svg>
       </button>
 
@@ -2520,7 +2695,7 @@ Error generating stack: `+ c.message + `
         @keyframes shimmer { 0%{background-position:-200% 0} 100%{background-position:200% 0} }
         @keyframes grainMove { 0%,100%{transform:translate(0,0)} 10%{transform:translate(-1%,-1%)} 20%{transform:translate(1%,1%)} 30%{transform:translate(-2%,1%)} 50%{transform:translate(1%,-1%)} }
       `}), x("div", { className: "w-full max-w-[430px] flex justify-end items-center mb-3 opacity-60", children: [x("span", { className: "font-cormorant text-[11px] tracking-[0.2em] text-white/50", children: [((K) => { let q = Math.floor(K / 60), O = Math.floor(K % 60); return `${q}:${String(O).padStart(2, "0")}` })(e), " / 1:00"] })] }), x("div", {
-            className: "relative w-full max-w-[430px] aspect-[9/16] bg-[#fff8ef] rounded-[28px] overflow-hidden shadow-[0_25px_80px_-15px_rgba(0,0,0,0.8),0_0_0_1px_rgba(212,167,83,0.25)]", children: [x("div", { className: "absolute inset-0 transition-opacity duration-[1200ms] ease-[cubic-bezier(0.4,0,0.2,1)]", style: { opacity: a === 1 ? 1 : 0, zIndex: a === 1 ? 3 : 1 }, children: [U("div", { className: "absolute inset-0 bg-[#fff8ef]" }), U("div", { className: "absolute inset-0 opacity-[0.07]", style: { backgroundImage: "radial-gradient(ellipse at 20% 20%, #7a102a 0%, transparent 50%), radial-gradient(ellipse at 80% 80%, #d4a753 0%, transparent 45%), radial-gradient(ellipse at 50% 10%, #7a102a 0%, transparent 40%)" } }), U("div", { className: "absolute top-0 left-0 w-[55%] h-[32%] opacity-20", children: U("svg", { viewBox: "0 0 200 200", className: "w-full h-full", children: x("g", { fill: "#d4a753", opacity: "0.5", children: [U("circle", { cx: "40", cy: "40", r: "18" }), U("circle", { cx: "75", cy: "35", r: "12" }), U("circle", { cx: "30", cy: "75", r: "14" }), U("path", { d: "M40 40 Q60 10 90 25 T75 35", fill: "none", stroke: "#7a102a", strokeWidth: "1", opacity: "0.4" })] }) }) }), U("div", { className: "absolute bottom-0 right-0 w-[55%] h-[32%] opacity-20 rotate-180", children: U("svg", { viewBox: "0 0 200 200", className: "w-full h-full", children: x("g", { fill: "#d4a753", opacity: "0.5", children: [U("circle", { cx: "40", cy: "40", r: "18" }), U("circle", { cx: "75", cy: "35", r: "12" }), U("circle", { cx: "30", cy: "75", r: "14" })] }) }) }), x("div", { className: "relative h-full flex flex-col items-center justify-center px-8 text-center", children: [U("div", { className: "mb-6 animate-[fadeUp_0.9s_0.2s_both]", children: U("div", { className: "w-[84px] h-[84px] mx-auto rounded-full bg-gradient-to-b from-[#fff8ef] to-[#f7e7c6] border border-[#d4a753]/40 flex items-center justify-center shadow-[0_8px_24px_rgba(212,167,83,0.25)]", children: x("svg", { viewBox: "0 0 64 64", className: "w-[54px] h-[54px]", children: [U("defs", { children: x("linearGradient", { id: "gGold", x1: "0", y1: "0", x2: "0", y2: "1", children: [U("stop", { offset: "0%", stopColor: "#f7d88a" }), U("stop", { offset: "100%", stopColor: "#d4a753" })] }) }), U("path", { d: "M32 6 L34 10 L38 8 L37 13 L42 14 L38 18 L42 22 L36 22 L35 28 L32 26 L29 28 L28 22 L22 22 L26 18 L22 14 L27 13 L26 8 L30 10 Z", fill: "url(#gGold)" }), U("circle", { cx: "32", cy: "32", r: "16", fill: "none", stroke: "url(#gGold)", strokeWidth: "1.2" }), U("path", { d: "M22 28 Q32 24 42 28 Q40 38 32 44 Q24 38 22 28", fill: "#d4a753", opacity: "0.9" }), U("circle", { cx: "26", cy: "33", r: "1.2", fill: "#7a102a" }), U("circle", { cx: "38", cy: "33", r: "1.2", fill: "#7a102a" }), U("path", { d: "M32 36 Q32 41 28 43", stroke: "#7a102a", strokeWidth: "1", fill: "none", strokeLinecap: "round" })] }) }) }), U("p", { className: "font-playfair text-[11px] tracking-[0.35em] text-[#7a102a] mb-5 animate-[fadeUp_0.9s_0.4s_both]", children: "|| SHREE GANESHAYA NAMAH ||" }), U("div", { className: "w-[46px] h-[1px] bg-gradient-to-r from-transparent via-[#d4a753] to-transparent mb-6 animate-[fadeUp_0.9s_0.55s_both]" }), x("h2", { className: "font-cormorant text-[17px] leading-[1.4] text-[#7a102a]/80 italic animate-[fadeUp_0.9s_0.7s_both]", children: ["With the blessings of Lord Ganesha", U("br", {}), "and our beloved elders"] }), x("div", { className: "mt-8 flex items-center gap-3 animate-[fadeUp_0.9s_0.9s_both]", children: [U("div", { className: "w-6 h-[1px] bg-[#d4a753]/50" }), U("div", { className: "w-1.5 h-1.5 rounded-full bg-[#d4a753]" }), U("div", { className: "w-6 h-[1px] bg-[#d4a753]/50" })] })] })] }), x("div", { className: "absolute inset-0 transition-opacity duration-[1200ms]", style: { opacity: a === 2 ? 1 : 0, zIndex: a === 2 ? 3 : 1 }, children: [U("div", { className: "absolute inset-0 overflow-hidden", children: U("img", { src: Np, alt: "Sasidhar & Vijaya in front of floral arch", className: "w-full h-full object-cover", style: { animation: a === 2 ? "ken1 6s ease-out forwards" : "none", transformOrigin: "50% 35%" } }) }), U("div", { className: "absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/10" }), U("div", { className: "absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-transparent" }), U("div", { className: "absolute inset-0 opacity-60 mix-blend-soft-light", style: { background: "radial-gradient(ellipse at 50% 20%, transparent 40%, rgba(0,0,0,0.7) 100%)" } }), a === 2 && U("div", { className: "absolute inset-0 pointer-events-none overflow-hidden", children: [...Array(14)].map((K, q) => U("div", { className: "absolute w-3 h-1.5 rounded-full bg-[#f7d88a] opacity-70", style: { left: `${6 + q * 7}%`, top: "-10px", animation: `petalFall ${4 + Math.random() * 3}s linear ${q * 0.25}s infinite`, transform: `rotate(${q * 25}deg)`, boxShadow: "0 0 8px rgba(247,216,138,0.7)" } }, q)) }), x("div", { className: "absolute inset-0 flex flex-col items-center justify-end pb-[88px] px-6 text-center", children: [U("p", { className: "font-cormorant text-white/70 text-[12px] tracking-[0.4em] uppercase mb-2", children: "Together with love" }), x("h1", { className: "font-vibes text-[54px] leading-[0.9] text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)]", children: [U("span", { className: "inline-block animate-[fadeUp_0.7s_0.2s_both]", children: "Sasidhar" }), U("span", { className: "inline-block mx-2 text-[#f7d88a] text-[36px] animate-[fadeUp_0.7s_0.4s_both]", children: "&" }), U("span", { className: "inline-block animate-[fadeUp_0.7s_0.6s_both]", children: "Vijaya" })] }), x("div", { className: "mt-4 flex items-center justify-center gap-2", children: [U("div", { className: "w-8 h-[1px] bg-white/40" }), U("div", { className: "w-7 h-7 rounded-full border border-[#d4a753]/70 flex items-center justify-center bg-white/10 backdrop-blur-sm", style: { animation: "heartBeat 1.8s infinite" }, children: U("span", { className: "text-[#ffd2d2] text-[12px]", children: "♥" }) }), U("div", { className: "w-8 h-[1px] bg-white/40" })] }), U("p", { className: "mt-3 font-playfair text-[11px] tracking-[0.25em] text-white/60 uppercase", children: "Are Getting Married" })] })] }), x("div", { className: "absolute inset-0 transition-opacity duration-[1200ms]", style: { opacity: a === 3 ? 1 : 0, zIndex: a === 3 ? 3 : 1 }, children: [U("div", { className: "absolute inset-0 overflow-hidden", children: U("img", { src: Jp, alt: "Groom with hand on bride shoulder", className: "w-full h-full object-cover", style: { animation: a === 3 ? "ken2 6s ease-out forwards" : "none" } }) }), U("div", { className: "absolute inset-0 bg-gradient-to-t from-[#0d0406] via-black/20 to-black/20" }), U("div", { className: "absolute inset-0 bg-[#7a102a]/10 mix-blend-multiply" }), U("div", { className: "absolute bottom-0 left-0 right-0 p-[18px]", children: x("div", { className: "rounded-[18px] bg-[#fff8ef]/95 backdrop-blur-[10px] border border-[#d4a753]/30 px-5 py-5 shadow-[0_12px_32px_rgba(0,0,0,0.35)]", children: [x("div", { className: "flex items-center justify-center gap-3 mb-3", children: [U("div", { className: "h-[1px] flex-1 bg-gradient-to-r from-transparent to-[#d4a753]/50" }), U("span", { className: "font-cormorant text-[10px] tracking-[0.35em] text-[#7a102a] uppercase", children: "Family" }), U("div", { className: "h-[1px] flex-1 bg-gradient-to-l from-transparent to-[#d4a753]/50" })] }), x("div", { className: "text-center", children: [U("p", { className: "font-cormorant text-[11px] tracking-[0.2em] text-[#7a102a]/60 uppercase", children: "Son of" }), U("p", { className: "font-playfair text-[14px] font-medium text-[#2b0f15] leading-tight mt-1", children: "Mr. Krishna Pyla & Mrs. Devi Pyla" }), x("div", { className: "my-3 flex items-center justify-center", children: [U("div", { className: "w-10 h-[1px] bg-[#d4a753]/40" }), U("div", { className: "mx-2 w-1 h-1 rounded-full bg-[#d4a753]" }), U("div", { className: "w-10 h-[1px] bg-[#d4a753]/40" })] }), U("p", { className: "font-cormorant text-[11px] tracking-[0.2em] text-[#7a102a]/60 uppercase", children: "Daughter of" }), U("p", { className: "font-playfair text-[14px] font-medium text-[#2b0f15] leading-tight mt-1", children: "Mr. Sanyasinaidu Challa & Mrs. Manga Challa" })] })] }) }), U("div", { className: "absolute top-[18%] right-[18%] w-[90px] h-[90px] rounded-full bg-[#ffd8a6]/25 blur-[18px] pointer-events-none", style: { animation: "bokehDrift 6s ease-in-out infinite" } })] }), x("div", { className: "absolute inset-0 transition-opacity duration-[1200ms]", style: { opacity: a === 4 ? 1 : 0, zIndex: a === 4 ? 3 : 1 }, children: [U("div", { className: "absolute inset-0 overflow-hidden", children: U("img", { src: Pp, alt: "Ring ceremony intimate moment", className: "w-full h-full object-cover", style: { animation: a === 4 ? "ken3 6s ease-out forwards" : "none" } }) }), U("div", { className: "absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/10" }), U("div", { className: "absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-transparent" }), x("div", { className: "absolute inset-0 flex flex-col items-center justify-center px-7 text-center pt-10", children: [U("div", { className: "w-[52px] h-[52px] rounded-full border border-white/30 flex items-center justify-center mb-5 bg-white/5 backdrop-blur-md", children: U("div", { className: "w-[36px] h-[36px] rounded-full border border-[#d4a753] flex items-center justify-center", children: U("span", { className: "text-[#d4a753] text-[14px]", children: "✦" }) }) }), U("p", { className: "font-cormorant text-[11px] tracking-[0.4em] text-white/60 uppercase mb-4", children: "A New Beginning" }), x("h2", { className: "font-playfair text-[22px] leading-[1.35] text-white font-[400] italic drop-shadow-[0_2px_16px_rgba(0,0,0,0.7)]", children: ["“As we begin our new journey together,", U("br", {}), "we invite you to be a part of our", U("br", {}), U("span", { className: "text-[#f7d88a] not-italic font-medium", children: "Special Day" }), "”"] }), U("div", { className: "mt-6 w-[36px] h-[1px] bg-[#d4a753]/70" })] }), U("div", { className: "absolute bottom-[78px] left-0 right-0 flex justify-center", children: x("div", { className: "flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/15", children: [U("div", { className: "w-1.5 h-1.5 rounded-full bg-[#f7d88a] animate-pulse" }), U("span", { className: "font-cormorant text-[10px] tracking-[0.25em] text-white/80 uppercase", children: "Two souls • One heart" })] }) })] }), x("div", {
+            className: "relative w-full max-w-[430px] aspect-[9/16] bg-[#fff8ef] rounded-[28px] overflow-hidden shadow-[0_25px_80px_-15px_rgba(0,0,0,0.8),0_0_0_1px_rgba(212,167,83,0.25)]", children: [x("div", { className: "absolute inset-0 transition-opacity duration-[1200ms] ease-[cubic-bezier(0.4,0,0.2,1)]", style: { opacity: a === 1 ? 1 : 0, zIndex: a === 1 ? 3 : 1 }, children: [U("div", { className: "absolute inset-0 bg-[#fff8ef]" }), U("div", { className: "absolute inset-0 opacity-[0.07]", style: { backgroundImage: "radial-gradient(ellipse at 20% 20%, #7a102a 0%, transparent 50%), radial-gradient(ellipse at 80% 80%, #d4a753 0%, transparent 45%), radial-gradient(ellipse at 50% 10%, #7a102a 0%, transparent 40%)" } }), U("div", { className: "absolute top-0 left-0 w-[55%] h-[32%] opacity-20", children: U("svg", { viewBox: "0 0 200 200", className: "w-full h-full", children: x("g", { fill: "#d4a753", opacity: "0.5", children: [U("circle", { cx: "40", cy: "40", r: "18" }), U("circle", { cx: "75", cy: "35", r: "12" }), U("circle", { cx: "30", cy: "75", r: "14" }), U("path", { d: "M40 40 Q60 10 90 25 T75 35", fill: "none", stroke: "#7a102a", strokeWidth: "1", opacity: "0.4" })] }) }) }), U("div", { className: "absolute bottom-0 right-0 w-[55%] h-[32%] opacity-20 rotate-180", children: U("svg", { viewBox: "0 0 200 200", className: "w-full h-full", children: x("g", { fill: "#d4a753", opacity: "0.5", children: [U("circle", { cx: "40", cy: "40", r: "18" }), U("circle", { cx: "75", cy: "35", r: "12" }), U("circle", { cx: "30", cy: "75", r: "14" })] }) }) }), x("div", { className: "relative h-full flex flex-col items-center justify-center px-8 text-center", children: [U("div", { className: "mb-6 animate-[fadeUp_0.9s_0.2s_both]", children: U("div", { className: "w-[84px] h-[84px] mx-auto rounded-full bg-gradient-to-b from-[#fff8ef] to-[#f7e7c6] border border-[#d4a753]/40 flex items-center justify-center shadow-[0_8px_24px_rgba(212,167,83,0.25)]", children: x("svg", { viewBox: "0 0 64 64", className: "w-[54px] h-[54px]", children: [U("defs", { children: x("linearGradient", { id: "gGold", x1: "0", y1: "0", x2: "0", y2: "1", children: [U("stop", { offset: "0%", stopColor: "#f7d88a" }), U("stop", { offset: "100%", stopColor: "#d4a753" })] }) }), U("path", { d: "M32 6 L34 10 L38 8 L37 13 L42 14 L38 18 L42 22 L36 22 L35 28 L32 26 L29 28 L28 22 L22 22 L26 18 L22 14 L27 13 L26 8 L30 10 Z", fill: "url(#gGold)" }), U("circle", { cx: "32", cy: "32", r: "16", fill: "none", stroke: "url(#gGold)", strokeWidth: "1.2" }), U("path", { d: "M22 28 Q32 24 42 28 Q40 38 32 44 Q24 38 22 28", fill: "#d4a753", opacity: "0.9" }), U("circle", { cx: "26", cy: "33", r: "1.2", fill: "#7a102a" }), U("circle", { cx: "38", cy: "33", r: "1.2", fill: "#7a102a" }), U("path", { d: "M32 36 Q32 41 28 43", stroke: "#7a102a", strokeWidth: "1", fill: "none", strokeLinecap: "round" })] }) }) }), U("p", { className: "font-playfair text-[11px] tracking-[0.35em] text-[#7a102a] mb-5 animate-[fadeUp_0.9s_0.4s_both]", children: "|| SHREE GANESHAYA NAMAH ||" }), U("div", { className: "w-[46px] h-[1px] bg-gradient-to-r from-transparent via-[#d4a753] to-transparent mb-6 animate-[fadeUp_0.9s_0.55s_both]" }), x("h2", { className: "font-cormorant text-[17px] leading-[1.4] text-[#7a102a] italic animate-[fadeUp_0.9s_0.7s_both]", children: ["With the blessings of Lord Ganesha", U("br", {}), "and our beloved elders"] }), x("div", { className: "mt-8 flex items-center gap-3 animate-[fadeUp_0.9s_0.9s_both]", children: [U("div", { className: "w-6 h-[1px] bg-[#d4a753]/50" }), U("div", { className: "w-1.5 h-1.5 rounded-full bg-[#d4a753]" }), U("div", { className: "w-6 h-[1px] bg-[#d4a753]/50" })] })] })] }), x("div", { className: "absolute inset-0 transition-opacity duration-[1200ms]", style: { opacity: a === 2 ? 1 : 0, zIndex: a === 2 ? 3 : 1 }, children: [U("div", { className: "absolute inset-0 overflow-hidden", children: U("img", { src: Np, alt: "Sasidhar & Vijaya in front of floral arch", className: "w-full h-full object-cover", style: { animation: a === 2 ? "ken1 6s ease-out forwards" : "none", transformOrigin: "50% 35%" } }) }), U("div", { className: "absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/10" }), U("div", { className: "absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-transparent" }), U("div", { className: "absolute inset-0 opacity-60 mix-blend-soft-light", style: { background: "radial-gradient(ellipse at 50% 20%, transparent 40%, rgba(0,0,0,0.7) 100%)" } }), a === 2 && U("div", { className: "absolute inset-0 pointer-events-none overflow-hidden", children: [...Array(14)].map((K, q) => U("div", { className: "absolute w-3 h-1.5 rounded-full bg-[#f7d88a] opacity-70", style: { left: `${6 + q * 7}%`, top: "-10px", animation: `petalFall ${4 + Math.random() * 3}s linear ${q * 0.25}s infinite`, transform: `rotate(${q * 25}deg)`, boxShadow: "0 0 8px rgba(247,216,138,0.7)" } }, q)) }), x("div", { className: "absolute inset-0 flex flex-col items-center justify-end pb-[88px] px-6 text-center", children: [U("p", { className: "font-cormorant text-white/70 text-[12px] tracking-[0.4em] uppercase mb-2", children: "Together with love" }), x("h1", { className: "font-vibes text-[54px] leading-[0.9] text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)]", children: [U("span", { className: "inline-block animate-[fadeUp_0.7s_0.2s_both]", children: "Sasidhar" }), U("span", { className: "inline-block mx-2 text-[#f7d88a] text-[36px] animate-[fadeUp_0.7s_0.4s_both]", children: "&" }), U("span", { className: "inline-block animate-[fadeUp_0.7s_0.6s_both]", children: "Vijaya" })] }), x("div", { className: "mt-4 flex items-center justify-center gap-2", children: [U("div", { className: "w-8 h-[1px] bg-white/40" }), U("div", { className: "w-7 h-7 rounded-full border border-[#d4a753]/70 flex items-center justify-center bg-white/10 backdrop-blur-sm", style: { animation: "heartBeat 1.8s infinite" }, children: U("span", { className: "text-[#ffd2d2] text-[12px]", children: "♥" }) }), U("div", { className: "w-8 h-[1px] bg-white/40" })] }), U("p", { className: "mt-3 font-playfair text-[11px] tracking-[0.25em] text-white/60 uppercase", children: "Are Getting Married" })] })] }), x("div", { className: "absolute inset-0 transition-opacity duration-[1200ms]", style: { opacity: a === 3 ? 1 : 0, zIndex: a === 3 ? 3 : 1 }, children: [U("div", { className: "absolute inset-0 overflow-hidden", children: U("img", { src: Jp, alt: "Groom with hand on bride shoulder", className: "w-full h-full object-cover", style: { animation: a === 3 ? "ken2 6s ease-out forwards" : "none" } }) }), U("div", { className: "absolute inset-0 bg-gradient-to-t from-[#0d0406] via-black/20 to-black/20" }), U("div", { className: "absolute inset-0 bg-[#7a102a]/10 mix-blend-multiply" }), U("div", { className: "absolute bottom-0 left-0 right-0 p-[18px]", children: x("div", { className: "rounded-[18px] bg-[#fff8ef]/95 backdrop-blur-[10px] border border-[#d4a753]/30 px-5 py-5 shadow-[0_12px_32px_rgba(0,0,0,0.35)]", children: [x("div", { className: "flex items-center justify-center gap-3 mb-3", children: [U("div", { className: "h-[1px] flex-1 bg-gradient-to-r from-transparent to-[#d4a753]/50" }), U("span", { className: "font-cormorant text-[10px] tracking-[0.35em] text-[#7a102a] uppercase", children: "Family" }), U("div", { className: "h-[1px] flex-1 bg-gradient-to-l from-transparent to-[#d4a753]/50" })] }), x("div", { className: "text-center", children: [U("p", { className: "font-cormorant text-[11px] tracking-[0.2em] text-[#7a102a]/60 uppercase", children: "Son of" }), U("p", { className: "font-playfair text-[14px] font-medium text-[#2b0f15] leading-tight mt-1", children: "Mr. Krishna Pyla & Mrs. Devi Pyla" }), x("div", { className: "my-3 flex items-center justify-center", children: [U("div", { className: "w-10 h-[1px] bg-[#d4a753]/40" }), U("div", { className: "mx-2 w-1 h-1 rounded-full bg-[#d4a753]" }), U("div", { className: "w-10 h-[1px] bg-[#d4a753]/40" })] }), U("p", { className: "font-cormorant text-[11px] tracking-[0.2em] text-[#7a102a]/60 uppercase", children: "Daughter of" }), U("p", { className: "font-playfair text-[14px] font-medium text-[#2b0f15] leading-tight mt-1", children: "Mr. Sanyasinaidu Challa & Mrs. Manga Challa" })] })] }) }), U("div", { className: "absolute top-[18%] right-[18%] w-[90px] h-[90px] rounded-full bg-[#ffd8a6]/25 blur-[18px] pointer-events-none", style: { animation: "bokehDrift 6s ease-in-out infinite" } })] }), x("div", { className: "absolute inset-0 transition-opacity duration-[1200ms]", style: { opacity: a === 4 ? 1 : 0, zIndex: a === 4 ? 3 : 1 }, children: [U("div", { className: "absolute inset-0 overflow-hidden", children: U("img", { src: Pp, alt: "Ring ceremony intimate moment", className: "w-full h-full object-cover", style: { animation: a === 4 ? "ken3 6s ease-out forwards" : "none" } }) }), U("div", { className: "absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/10" }), U("div", { className: "absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-transparent" }), x("div", { className: "absolute inset-0 flex flex-col items-center justify-center px-7 text-center pt-10", children: [U("div", { className: "w-[52px] h-[52px] rounded-full border border-white/30 flex items-center justify-center mb-5 bg-white/5 backdrop-blur-md", children: U("div", { className: "w-[36px] h-[36px] rounded-full border border-[#d4a753] flex items-center justify-center", children: U("span", { className: "text-[#d4a753] text-[14px]", children: "✦" }) }) }), U("p", { className: "font-cormorant text-[11px] tracking-[0.4em] text-white/60 uppercase mb-4", children: "A New Beginning" }), x("h2", { className: "font-playfair text-[22px] leading-[1.35] text-white font-[400] italic drop-shadow-[0_2px_16px_rgba(0,0,0,0.7)]", children: ["“As we begin our new journey together,", U("br", {}), "we invite you to be a part of our", U("br", {}), U("span", { className: "text-[#f7d88a] not-italic font-medium", children: "Special Day" }), "”"] }), U("div", { className: "mt-6 w-[36px] h-[1px] bg-[#d4a753]/70" })] }), U("div", { className: "absolute bottom-[78px] left-0 right-0 flex justify-center", children: x("div", { className: "flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/15", children: [U("div", { className: "w-1.5 h-1.5 rounded-full bg-[#f7d88a] animate-pulse" }), U("span", { className: "font-cormorant text-[10px] tracking-[0.25em] text-white/80 uppercase", children: "Two souls • One heart" })] }) })] }), x("div", {
               className: "absolute inset-0 transition-opacity duration-[1200ms]", style: { opacity: a === 5 ? 1 : 0, zIndex: a === 5 ? 3 : 1 }, children: [
                 U("div", { className: "absolute inset-0 overflow-hidden", children: U("img", { src: inviteImg4, alt: "Sasidhar and Vijaya", className: "w-full h-full object-cover", style: { animation: a === 5 ? "ken1 7s ease-out forwards" : "none", transformOrigin: "50% 40%" } }) }),
                 U("div", { className: "absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/5" }),
@@ -2590,7 +2765,7 @@ Error generating stack: `+ c.message + `
                   ]
                 })
               ]
-            }), x("div", { className: "absolute inset-0 transition-opacity duration-[1200ms]", style: { opacity: a === 10 ? 1 : 0, zIndex: a === 10 ? 3 : 1 }, children: [U("div", { className: "absolute inset-0 bg-[#fff8ef]" }), U("div", { className: "absolute inset-0 opacity-[0.09]", style: { backgroundImage: "radial-gradient(circle at 15% 15%, #7a102a 1px, transparent 1.5px), radial-gradient(circle at 85% 85%, #d4a753 1px, transparent 1.5px), radial-gradient(ellipse at 50% 0%, #d4a753 0%, transparent 60%)", backgroundSize: "42px 42px, 56px 56px, 100% 100%" } }), x("div", { className: "relative h-full flex flex-col px-[18px] pt-[28px] pb-[88px] overflow-y-auto", children: [x("div", { className: "text-center mb-4", children: [U("p", { className: "font-cormorant text-[10px] tracking-[0.4em] text-[#7a102a]/60 uppercase", children: "You are cordially invited" }), U("h3", { className: "font-vibes text-[36px] leading-none text-[#7a102a] mt-1", children: "Wedding Ceremony" })] }), x("div", { className: "space-y-[10px]", children: [x("div", { className: "rounded-[14px] border border-[#d4a753]/40 bg-white/80 backdrop-blur-sm px-4 py-[12px] flex gap-3 shadow-[0_4px_18px_rgba(122,16,42,0.06)]", children: [U("div", { className: "w-9 h-9 rounded-full bg-[#7a102a] flex items-center justify-center shrink-0 mt-0.5", children: x("svg", { width: "16", height: "16", viewBox: "0 0 24 24", fill: "none", stroke: "#f7d88a", strokeWidth: "1.6", children: [U("rect", { x: "3", y: "4", width: "18", height: "18", rx: "2" }), U("path", { d: "M16 2v4M8 2v4M3 10h18" })] }) }), x("div", { children: [U("p", { className: "font-playfair text-[11px] tracking-[0.2em] text-[#7a102a]/60 uppercase", children: "Muhurtham" }), U("p", { className: "font-playfair text-[13.5px] leading-[1.35] text-[#231219] font-[600]", children: "Wednesday, 26 August 2026" }), U("p", { className: "font-cormorant text-[13px] text-[#7a102a] font-[600] mt-0.5", children: "11:44 PM • Auspicious Night" })] })] }), x("div", { className: "rounded-[14px] border border-[#d4a753]/40 bg-white/80 backdrop-blur-sm px-4 py-[12px] flex gap-3 shadow-[0_4px_18px_rgba(122,16,42,0.06)]", children: [U("div", { className: "w-9 h-9 rounded-full bg-[#d4a753] flex items-center justify-center shrink-0 mt-0.5", children: x("svg", { width: "16", height: "16", viewBox: "0 0 24 24", fill: "none", stroke: "white", strokeWidth: "1.6", children: [U("path", { d: "M12 21s-6-5.2-6-9a6 6 0 0 1 12 0c0 3.8-6 9-6 9Z" }), U("circle", { cx: "12", cy: "12", r: "2" })] }) }), x("div", { className: "flex-1 min-w-0", children: [U("p", { className: "font-playfair text-[11px] tracking-[0.2em] text-[#7a102a]/60 uppercase", children: "Venue" }), U("p", { className: "font-playfair text-[13.5px] leading-[1.35] text-[#231219] font-[600]", children: "Ramakrishna Function Hall" }), x("p", { className: "font-cormorant text-[12px] leading-[1.35] text-[#5a2a36] mt-0.5", children: ["Opp. Ravalammatahli Temple,", U("br", {}), "K Kotapadu, Visakhapatnam 531034"] })] })] }), x("div", { className: "rounded-[14px] border border-[#7a102a]/20 bg-[#7a102a]/[0.06] px-4 py-[12px] flex gap-3", children: [U("div", { className: "w-9 h-9 rounded-full bg-white border border-[#d4a753]/40 flex items-center justify-center shrink-0 mt-0.5", children: x("svg", { width: "16", height: "16", viewBox: "0 0 24 24", fill: "none", stroke: "#7a102a", strokeWidth: "1.6", children: [U("circle", { cx: "12", cy: "8", r: "4" }), U("path", { d: "M4 20c0-4 4-6 8-6s8 2 8 6" })] }) }), x("div", { children: [U("p", { className: "font-playfair text-[11px] tracking-[0.2em] text-[#7a102a]/60 uppercase", children: "Reception" }), U("p", { className: "font-playfair text-[13.5px] leading-[1.35] text-[#231219] font-[600]", children: "Wednesday, 26 Aug 2026" }), U("p", { className: "font-cormorant text-[13px] text-[#7a102a] font-[600] mt-0.5", children: "7 PM onwards • Dinner & Celebrations" })] })] })] }), x("div", { className: "mt-auto pt-5 text-center", children: [x("div", { className: "flex items-center justify-center gap-2 mb-2", children: [U("div", { className: "w-6 h-[1px] bg-[#d4a753]/40" }), U("span", { className: "text-[#d4a753] text-[10px]", children: "❧" }), U("div", { className: "w-6 h-[1px] bg-[#d4a753]/40" })] }), U("p", { className: "font-cormorant text-[10px] tracking-[0.3em] text-[#7a102a]/50 uppercase", children: "Best Compliments" }), U("p", { className: "font-playfair text-[13px] text-[#2b0f15] font-[600] mt-1", children: "Pyla & Challa Families" }), U("p", { className: "font-vibes text-[22px] text-[#7a102a] mt-2 opacity-80", children: "Sasidhar & Vijaya" })] })] })] }), U("div", { className: "pointer-events-none absolute inset-0 z-[8] opacity-[0.055] mix-blend-multiply", style: { backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`, animation: "grainMove 0.4s steps(2) infinite" } }), x("div", { className: "pointer-events-none absolute inset-0 z-[7] overflow-hidden", children: [U("div", { className: "absolute -top-[20%] -left-[20%] w-[80%] h-[60%] bg-gradient-to-br from-[#ffd8a6]/30 via-[#ff7e7e]/15 to-transparent blur-[28px] rounded-full", style: { animation: "lightLeak1 9s ease-in-out infinite" } }), U("div", { className: "absolute -bottom-[10%] -right-[15%] w-[70%] h-[50%] bg-gradient-to-tl from-[#d4a753]/25 via-[#fff8ef]/10 to-transparent blur-[26px] rounded-full", style: { animation: "lightLeak2 11s ease-in-out infinite" } })] }), U("div", { className: "pointer-events-none absolute inset-0 z-[7]", children: [...Array(7)].map((K, q) => U("div", { className: "absolute rounded-full bg-white/30 blur-[1px]", style: { width: `${10 + q * 3}px`, height: `${10 + q * 3}px`, left: `${12 + q * 13}%`, top: `${18 + q % 3 * 28}%`, animation: `bokehDrift ${5 + q}s ease-in-out ${q * 0.6}s infinite`, opacity: 0.35 } }, q)) }), U("div", { className: "pointer-events-none absolute inset-0 z-[6] rounded-[28px]", style: { boxShadow: "inset 0 0 120px rgba(0,0,0,0.55), inset 0 0 40px rgba(0,0,0,0.3)" } }), U("div", { className: "pointer-events-none absolute inset-[11px] z-[9] rounded-[18px] border border-[#d4a753]/30" }), U("div", { className: "pointer-events-none absolute inset-[14px] z-[9] rounded-[16px] border border-white/10" }), U("div", { className: "pointer-events-none absolute top-[14px] left-[14px] z-[10] w-[22px] h-[22px] border-t border-l border-[#d4a753]/70 rounded-tl-[10px]" }), U("div", { className: "pointer-events-none absolute top-[14px] right-[14px] z-[10] w-[22px] h-[22px] border-t border-r border-[#d4a753]/70 rounded-tr-[10px]" }), U("div", { className: "pointer-events-none absolute bottom-[14px] left-[14px] z-[10] w-[22px] h-[22px] border-b border-l border-[#d4a753]/70 rounded-bl-[10px]" }), U("div", { className: "pointer-events-none absolute bottom-[14px] right-[14px] z-[10] w-[22px] h-[22px] border-b border-r border-[#d4a753]/70 rounded-br-[10px]" }), U("div", { className: "absolute top-0 left-[18%] right-[18%] h-[1px] z-[10] opacity-40", style: { background: "linear-gradient(90deg, transparent, #d4a753, transparent)", backgroundSize: "200% 100%", animation: "shimmer 3s linear infinite" } }), x("div", { className: "absolute bottom-0 left-0 right-0 z-[20] px-[14px] pb-[14px] pt-8 bg-gradient-to-t from-black/80 via-black/40 to-transparent", children: [x("div", { className: "mb-3 group cursor-pointer", onPointerDown: D, onPointerMove: W, onPointerUp: E, onPointerCancel: E, onClick: V, children: [U("div", { className: "h-[3px] w-full bg-white/20 rounded-full overflow-hidden backdrop-blur-sm", children: U("div", { className: "h-full bg-gradient-to-r from-[#d4a753] to-[#f7d88a] transition-none rounded-full", style: { width: `${p}%` } }) }), x("div", { className: "flex justify-between mt-1.5", children: [x("span", { className: "font-cormorant text-[9px] text-white/40", children: [Math.round(p), "%"] })] })] }), x("div", { className: "flex items-center justify-between", children: [x("div", { className: "flex items-center gap-2", children: [U("button", { onClick: () => { let q = !t; r(q); window.__setInvitePlaying && window.__setInvitePlaying(q, e) }, className: "w-9 h-9 rounded-full bg-white/15 backdrop-blur-md border border-white/20 flex items-center justify-center hover:bg-white/25 transition-colors", "aria-label": t ? "Pause" : "Play", children: t ? x("svg", { width: "14", height: "14", viewBox: "0 0 24 24", fill: "white", children: [U("rect", { x: "6", y: "4", width: "4", height: "16", rx: "1" }), U("rect", { x: "14", y: "4", width: "4", height: "16", rx: "1" })] }) : U("svg", { width: "14", height: "14", viewBox: "0 0 24 24", fill: "white", children: U("path", { d: "M8 5.14v14l11-7-11-7Z" }) }) }), U("button", { onClick: () => { let q = !l; c(q); window.__setInviteMuted && window.__setInviteMuted(q, e) }, className: "w-8 h-8 rounded-full bg-white/10 backdrop-blur-md border border-white/15 flex items-center justify-center hover:bg-white/20 transition-colors", "aria-label": "Toggle sound", children: l ? x("svg", { width: "14", height: "14", viewBox: "0 0 24 24", fill: "none", stroke: "white", strokeWidth: "1.6", children: [U("path", { d: "M11 5L6 9H2v6h4l5 4V5Z" }), U("path", { d: "M23 9l-6 6M17 9l6 6" })] }) : x("svg", { width: "14", height: "14", viewBox: "0 0 24 24", fill: "none", stroke: "white", strokeWidth: "1.6", children: [U("path", { d: "M11 5L6 9H2v6h4l5 4V5Z" }), U("path", { d: "M15.5 8.5a5 5 0 0 1 0 7M19 5a9 9 0 0 1 0 14" })] }) })] }),] })] }), U("div", { className: "absolute top-[18px] left-1/2 -translate-x-1/2 z-[20] flex gap-1.5", children: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((K) => U("div", { className: `h-1 rounded-full transition-all duration-500 ${a === K ? "w-6 bg-[#d4a753]" : "w-1 bg-white/40"}` }, K)) })]
+            }), x("div", { className: "absolute inset-0 transition-opacity duration-[1200ms]", style: { opacity: a === 10 ? 1 : 0, zIndex: a === 10 ? 3 : 1 }, children: [U("div", { className: "absolute inset-0 bg-gradient-to-b from-[#302a26] via-[#24211f] to-[#171615]" }), U("div", { className: "absolute inset-0 opacity-[0.10]", style: { backgroundImage: "radial-gradient(ellipse at 50% 0%, #d4a753 0%, transparent 60%)", backgroundSize: "100% 100%" } }), x("div", { className: "relative h-full flex flex-col px-[18px] pt-[28px] pb-[88px] overflow-y-auto", children: [x("div", { className: "text-center mb-4", children: [U("p", { className: "font-cormorant text-[10px] tracking-[0.4em] text-[#d7a0ad]/75 uppercase", children: "You are cordially invited" }), U("h3", { className: "font-vibes text-[36px] leading-none text-[#d7a0ad] mt-1", children: "Wedding Ceremony" })] }), x("div", { className: "space-y-[10px]", children: [x("div", { className: "rounded-[14px] border border-[#d4a753]/40 bg-[#2d2a27]/94 backdrop-blur-sm px-4 py-[12px] flex gap-3 shadow-[0_4px_18px_rgba(122,16,42,0.06)]", children: [U("div", { className: "w-9 h-9 rounded-full bg-[#8e1020] flex items-center justify-center shrink-0 mt-0.5", children: x("svg", { width: "16", height: "16", viewBox: "0 0 24 24", fill: "none", stroke: "#f7d88a", strokeWidth: "1.6", children: [U("rect", { x: "3", y: "4", width: "18", height: "18", rx: "2" }), U("path", { d: "M16 2v4M8 2v4M3 10h18" })] }) }), x("div", { children: [U("p", { className: "font-playfair text-[11px] tracking-[0.2em] text-[#d7a0ad]/75 uppercase", children: "Muhurtham" }), U("p", { className: "font-playfair text-[13.5px] leading-[1.35] text-[#f4eee8] font-[600]", children: "Wednesday, 26 August 2026" }), U("p", { className: "font-cormorant text-[13px] text-[#d7a0ad] font-[600] mt-0.5", children: "11:44 PM • Auspicious Night" })] })] }), x("div", { className: "rounded-[14px] border border-[#d4a753]/40 bg-[#2d2a27]/94 backdrop-blur-sm px-4 py-[12px] flex gap-3 shadow-[0_4px_18px_rgba(122,16,42,0.06)]", children: [U("div", { className: "w-9 h-9 rounded-full bg-[#8a3515] flex items-center justify-center shrink-0 mt-0.5", children: x("svg", { width: "16", height: "16", viewBox: "0 0 24 24", fill: "none", stroke: "white", strokeWidth: "1.6", children: [U("path", { d: "M12 21s-6-5.2-6-9a6 6 0 0 1 12 0c0 3.8-6 9-6 9Z" }), U("circle", { cx: "12", cy: "12", r: "2" })] }) }), x("div", { className: "flex-1 min-w-0", children: [U("p", { className: "font-playfair text-[11px] tracking-[0.2em] text-[#d7a0ad]/75 uppercase", children: "Venue" }), U("p", { className: "font-playfair text-[13.5px] leading-[1.35] text-[#f4eee8] font-[600]", children: "Ramakrishna Function Hall" }), x("p", { className: "font-cormorant text-[12px] leading-[1.35] text-[#d2b0b8] mt-0.5", children: ["Opp. Ravalammatahli Temple,", U("br", {}), "K Kotapadu, Visakhapatnam 531034"] })] })] }), x("div", { className: "rounded-[14px] border border-[#7a102a]/20 bg-[#6f2638]/20 px-4 py-[12px] flex gap-3", children: [U("div", { className: "w-9 h-9 rounded-full bg-[#25282b] border border-[#d4a753]/50 flex items-center justify-center shrink-0 mt-0.5", children: x("svg", { width: "16", height: "16", viewBox: "0 0 24 24", fill: "none", stroke: "#7a102a", strokeWidth: "1.6", children: [U("circle", { cx: "12", cy: "8", r: "4" }), U("path", { d: "M4 20c0-4 4-6 8-6s8 2 8 6" })] }) }), x("div", { children: [U("p", { className: "font-playfair text-[11px] tracking-[0.2em] text-[#d7a0ad]/75 uppercase", children: "Reception" }), U("p", { className: "font-playfair text-[13.5px] leading-[1.35] text-[#f4eee8] font-[600]", children: "Wednesday, 26 Aug 2026" }), U("p", { className: "font-cormorant text-[13px] text-[#d7a0ad] font-[600] mt-0.5", children: "7 PM onwards • Dinner & Celebrations" })] })] })] }), x("div", { className: "mt-auto pt-5 text-center", children: [x("div", { className: "flex items-center justify-center gap-2 mb-2", children: [U("div", { className: "w-6 h-[1px] bg-[#d4a753]/40" }), U("span", { className: "text-[#d4a753] text-[10px]", children: "❧" }), U("div", { className: "w-6 h-[1px] bg-[#d4a753]/40" })] }), U("p", { className: "font-cormorant text-[10px] tracking-[0.3em] text-[#c894a2]/70 uppercase", children: "Best Compliments" }), U("p", { className: "font-playfair text-[13px] text-[#2b0f15] font-[600] mt-1", children: "Pyla & Challa Families" }), U("p", { className: "font-vibes text-[22px] text-[#d7a0ad] mt-2 opacity-80", children: "Sasidhar & Vijaya" })] })] })] }), U("div", { className: "pointer-events-none absolute inset-0 z-[8] opacity-[0.055] mix-blend-multiply", style: { backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`, animation: "grainMove 0.4s steps(2) infinite" } }), x("div", { className: "pointer-events-none absolute inset-0 z-[7] overflow-hidden", children: [U("div", { className: "absolute -top-[20%] -left-[20%] w-[80%] h-[60%] bg-gradient-to-br from-[#ffd8a6]/30 via-[#ff7e7e]/15 to-transparent blur-[28px] rounded-full", style: { animation: "lightLeak1 9s ease-in-out infinite" } }), U("div", { className: "absolute -bottom-[10%] -right-[15%] w-[70%] h-[50%] bg-gradient-to-tl from-[#d4a753]/25 via-[#fff8ef]/10 to-transparent blur-[26px] rounded-full", style: { animation: "lightLeak2 11s ease-in-out infinite" } })] }), U("div", { className: "pointer-events-none absolute inset-0 z-[7]", children: [...Array(7)].map((K, q) => U("div", { className: "absolute rounded-full bg-white/30 blur-[1px]", style: { width: `${10 + q * 3}px`, height: `${10 + q * 3}px`, left: `${12 + q * 13}%`, top: `${18 + q % 3 * 28}%`, animation: `bokehDrift ${5 + q}s ease-in-out ${q * 0.6}s infinite`, opacity: 0.35 } }, q)) }), U("div", { className: "pointer-events-none absolute inset-0 z-[6] rounded-[28px]", style: { boxShadow: "inset 0 0 120px rgba(0,0,0,0.55), inset 0 0 40px rgba(0,0,0,0.3)" } }), U("div", { className: "pointer-events-none absolute inset-[11px] z-[9] rounded-[18px] border border-[#d4a753]/30" }), U("div", { className: "pointer-events-none absolute inset-[14px] z-[9] rounded-[16px] border border-white/10" }), U("div", { className: "pointer-events-none absolute top-[14px] left-[14px] z-[10] w-[22px] h-[22px] border-t border-l border-[#d4a753]/70 rounded-tl-[10px]" }), U("div", { className: "pointer-events-none absolute top-[14px] right-[14px] z-[10] w-[22px] h-[22px] border-t border-r border-[#d4a753]/70 rounded-tr-[10px]" }), U("div", { className: "pointer-events-none absolute bottom-[14px] left-[14px] z-[10] w-[22px] h-[22px] border-b border-l border-[#d4a753]/70 rounded-bl-[10px]" }), U("div", { className: "pointer-events-none absolute bottom-[14px] right-[14px] z-[10] w-[22px] h-[22px] border-b border-r border-[#d4a753]/70 rounded-br-[10px]" }), U("div", { className: "absolute top-0 left-[18%] right-[18%] h-[1px] z-[10] opacity-40", style: { background: "linear-gradient(90deg, transparent, #d4a753, transparent)", backgroundSize: "200% 100%", animation: "shimmer 3s linear infinite" } }), x("div", { className: "absolute bottom-0 left-0 right-0 z-[20] px-[14px] pb-[14px] pt-8 bg-gradient-to-t from-black/80 via-black/40 to-transparent", children: [x("div", { className: "mb-3 group cursor-pointer", onPointerDown: D, onPointerMove: W, onPointerUp: E, onPointerCancel: E, onClick: V, children: [U("div", { className: "h-[3px] w-full bg-white/20 rounded-full overflow-hidden backdrop-blur-sm", children: U("div", { className: "h-full bg-gradient-to-r from-[#d4a753] to-[#f7d88a] transition-none rounded-full", style: { width: `${p}%` } }) }), x("div", { className: "flex justify-between mt-1.5", children: [x("span", { className: "font-cormorant text-[9px] text-white/40", children: [Math.round(p), "%"] })] })] }), x("div", { className: "flex items-center justify-between", children: [x("div", { className: "flex items-center gap-2", children: [U("button", { onClick: () => { let q = !t; r(q); window.__setInvitePlaying && window.__setInvitePlaying(q, e) }, className: "w-9 h-9 rounded-full bg-white/15 backdrop-blur-md border border-white/20 flex items-center justify-center hover:bg-white/25 transition-colors", "aria-label": t ? "Pause" : "Play", children: t ? x("svg", { width: "14", height: "14", viewBox: "0 0 24 24", fill: "white", children: [U("rect", { x: "6", y: "4", width: "4", height: "16", rx: "1" }), U("rect", { x: "14", y: "4", width: "4", height: "16", rx: "1" })] }) : U("svg", { width: "14", height: "14", viewBox: "0 0 24 24", fill: "white", children: U("path", { d: "M8 5.14v14l11-7-11-7Z" }) }) }), U("button", { onClick: () => { let q = !l; c(q); window.__setInviteMuted && window.__setInviteMuted(q, e) }, className: "w-8 h-8 rounded-full bg-white/10 backdrop-blur-md border border-white/15 flex items-center justify-center hover:bg-white/20 transition-colors", "aria-label": "Toggle sound", children: l ? x("svg", { width: "14", height: "14", viewBox: "0 0 24 24", fill: "none", stroke: "white", strokeWidth: "1.6", children: [U("path", { d: "M11 5L6 9H2v6h4l5 4V5Z" }), U("path", { d: "M23 9l-6 6M17 9l6 6" })] }) : x("svg", { width: "14", height: "14", viewBox: "0 0 24 24", fill: "none", stroke: "white", strokeWidth: "1.6", children: [U("path", { d: "M11 5L6 9H2v6h4l5 4V5Z" }), U("path", { d: "M15.5 8.5a5 5 0 0 1 0 7M19 5a9 9 0 0 1 0 14" })] }) })] }),] })] }), U("div", { className: "absolute top-[18px] left-1/2 -translate-x-1/2 z-[20] flex gap-1.5", children: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((K) => U("div", { className: `h-1 rounded-full transition-all duration-500 ${a === K ? "w-6 bg-[#d4a753]" : "w-1 bg-white/40"}` }, K)) })]
           }), x("div", {
             className: "w-full max-w-[430px] mt-5 grid grid-cols-3 gap-2.5", children: [x("button", { onClick: () => { window.__openWeddingCalendarChooser && window.__openWeddingCalendarChooser() }, className: "group relative overflow-hidden rounded-[14px] bg-[#fff8ef] border border-[#d4a753]/30 px-3 py-3.5 flex flex-col items-center gap-1.5 hover:border-[#d4a753]/60 transition-all", children: [U("div", { className: "w-8 h-8 rounded-full bg-[#7a102a] flex items-center justify-center group-hover:scale-105 transition-transform", children: x("svg", { width: "14", height: "14", viewBox: "0 0 24 24", fill: "none", stroke: "#f7d88a", strokeWidth: "1.7", children: [U("rect", { x: "3", y: "4", width: "18", height: "18", rx: "2" }), U("path", { d: "M16 2v4M8 2v4M3 10h18" }), U("path", { d: "M12 15l-2 2 6-6" })] }) }), U("span", { className: "font-playfair text-[11px] font-semibold tracking-wide text-[#2b0f15]", children: "Save Date" }), U("span", { className: "font-cormorant text-[9px] text-[#7a102a]/60 tracking-wider uppercase", children: "Calendar" })] }), x("button", { onClick: () => window.open("https://www.google.com/maps/search/Ramakrishna+Function+Hall+K+Kotapadu+Visakhapatnam", "_blank"), className: "group relative overflow-hidden rounded-[14px] bg-[#fff8ef] border border-[#d4a753]/30 px-3 py-3.5 flex flex-col items-center gap-1.5 hover:border-[#d4a753]/60 transition-all", children: [U("div", { className: "w-8 h-8 rounded-full bg-[#d4a753] flex items-center justify-center group-hover:scale-105 transition-transform", children: x("svg", { width: "14", height: "14", viewBox: "0 0 24 24", fill: "none", stroke: "white", strokeWidth: "1.7", children: [U("path", { d: "M12 21s-6-5.2-6-9a6 6 0 0 1 12 0c0 3.8-6 9-6 9Z" }), U("circle", { cx: "12", cy: "12", r: "2" })] }) }), U("span", { className: "font-playfair text-[11px] font-semibold tracking-wide text-[#2b0f15]", children: "Directions" }), U("span", { className: "font-cormorant text-[9px] text-[#7a102a]/60 tracking-wider uppercase", children: "Venue Map" })] }), x("button", {
               onClick: async () => {
@@ -3053,6 +3228,37 @@ ${mapsUrl}`;
 
     });
   </script>
+
+
+<style id="blessings-text-color">
+/* Match the opening-slide mantra color: #67011b */
+</style>
+<script>
+(function () {
+  const targetText = "With the blessings of Lord Ganesha and our beloved elders";
+  const targetColor = "#67011b";
+
+  function applyBlessingsColor() {
+    const walker = document.createTreeWalker(
+      document.body,
+      NodeFilter.SHOW_ELEMENT
+    );
+
+    let node;
+    while (node = walker.nextNode()) {
+      if (node.textContent && node.textContent.trim() === targetText) {
+        node.style.setProperty("color", targetColor, "important");
+      }
+    }
+  }
+
+  applyBlessingsColor();
+  new MutationObserver(applyBlessingsColor).observe(document.body, {
+    childList: true,
+    subtree: true
+  });
+})();
+</script>
 
 </body>
 
